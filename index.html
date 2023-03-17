@@ -47,15 +47,31 @@
         </div>
     </div>
 
-    <div class="heading"></div> <!-- skiing/ snowboarding img-->
-    <div class="fnDesc">decribe how the site work!</div>
-    <div class="locationSearch">Enter a Location...
-        <input id="locationSearchBar" type="text" name="location search">
-    </div>
-    <div class="map"></div> <!-- map or drop down search for location--><!-- map API -->
-    <div class="weatherReport"></div> <!--weather API-->
-    <div class="listOfResorts"></div> <!--js create <li>-->
-    
+    <!-- Horizontal line divider -->
+    <hr class="hr" />
+
+
+    <!-- List of elements related to the APIs. Nothing aside from the map will display by default so the rest are stylings for theoretical elements that will be created by user input -->
+    <!-- We can have a default search value if its easier too, e.g. the page always defaults to Lake Tahoe or something before the user searches -->
+
+    <!-- Map widget should be present by default -->
+    <div id="mapWidget"></div>
+
+    <!-- Shows the number of results, should be added after searching -->
+    <div id="resultNumbers"></div>
+
+    <!-- These three will show the location and should appear after searching, if we have more, maybe just have a scroll bar and append more elements with ids 4, 5, 6, etc. -->
+    <!-- These ones definitely need the most editing since they will be generated dynamically and have to include data from locations -->
+    <ul>
+        <li id="resultLocation-1"></li>
+        <li id="resultLocation-2"></li>
+        <li id="resultLocation-3"></li>
+    </ul>
+
+    <!-- Displays the forecast for the selected location -->
+    <div id="weatherWidget"></div>
+
+    <hr class="hr" />
 
     <footer class="apiLinks"><!--icon and link of apis--></footer> 
 
