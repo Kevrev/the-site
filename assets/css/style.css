@@ -1,0 +1,17 @@
+header {
+    position: absolute;
+    width: 1430px;
+    height: 100px;
+    left: 0px;
+    top: 0px;
+    background-color: rgba(90, 170, 228, 1);
+}
+
+.websiteTitle {
+    font-family: 'Carter One', cursive, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 54px;
+    line-height: 83px;
+    color: #FFFFFF; 
+}
