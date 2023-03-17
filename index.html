@@ -26,16 +26,30 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- Blue rectangle -->
     <header>
+        <!-- Website Title (Have an Ice Day)-->
         <p class="websiteTitle">Have an Ice Day</p>
     </header>
+    
+    <!-- Banner image (set as background-image ) -->
     <div class="banner"></div>
-    
-    
+
+    <!-- Centers serach button -->
+    <div class="row justify-content-center">
+        <!-- sets width (searchBar) -->
+        <div class="searchBar input-group rounded">
+            <!-- Actual input part, rounds search button too -->
+            <input type="search" class="form-control rounded" placeholder="Search by location..." aria-label="Search" aria-describedby="search-addon"/>
+            <span class="input-group-text border-0" id="search-addon">
+            <i class="fas fa-search"></i>
+            </span>
+        </div>
+    </div>
     <div class="heading"></div> <!-- skiing/ snowboarding img-->
     <div class="fnDesc">decribe how the site work!</div>
     <div class="locationSearch">Enter a Location...
-        <input id="locationSearchBox" type="text" name="location search">
+        <input id="locationSearchBar" type="text" name="location search">
     </div>
     <div class="map"></div> <!-- map or drop down search for location--><!-- map API -->
     <div class="weatherReport"></div> <!--weather API-->

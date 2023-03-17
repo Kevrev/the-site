@@ -18,9 +18,24 @@ header {
     padding-top: 5px;
 }
 
+/* Format banner better and so image isn't blurry */
 .banner {
     background-image: url('../images/Banner.png');
     background-repeat:no-repeat;
     width: auto;
     height: 100vh;
+}
+
+.searchBar {
+    width: 388px;
+}
+
+/* Text color of the text in the searchBar */
+.searchBar ::placeholder {
+    color: #aaabc3;
+}
+
+/* Controls the outline of the searchBar */
+.form-control {
+    border-color: #aaabc3;
 }
