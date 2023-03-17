@@ -23,7 +23,8 @@ header {
     background-image: url('../images/Banner.png');
     background-repeat:no-repeat;
     width: auto;
-    height: 100vh;
+    height: 95vh;
+    margin-bottom: 0px;
 }
 
 .searchBar {
