@@ -23,8 +23,8 @@ header {
     background-image: url('../images/Banner.png');
     background-repeat:no-repeat;
     width: auto;
-    height: 95vh;
-    margin-bottom: 0px;
+    height: 95dsdvh;
+    margin-bottom: 0px
 }
 
 .searchBar {
@@ -39,4 +39,17 @@ header {
 /* Controls the outline of the searchBar */
 .form-control {
     border-color: #aaabc3;
+}
+
+.locationName {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #268EDA;  
+}
+
+.card-text {
+    color: #AAABC3;
 }
