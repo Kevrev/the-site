@@ -23,8 +23,8 @@ header {
     background-image: url('../images/Banner.png');
     background-repeat:no-repeat;
     width: auto;
-    height: 95vh;
-    margin-bottom: 0px;
+    height: 95dsdvh;
+    margin-bottom: 0px
 }
 
 .searchBar {
@@ -39,4 +39,41 @@ header {
 /* Controls the outline of the searchBar */
 .form-control {
     border-color: #aaabc3;
+}
+
+.card {
+    width: 500px;
+    height: 120px;
+    background: #FFFFFF;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    ;
+}
+
+.imgContainer {
+    height: 120px;
+    overflow: hidden;
+}
+
+.locationImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.locationName {
+    font-family: 'Fira Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 5px;
+    color: #268EDA;  
+    padding-bottom: 15px;
+}
+
+.card-text {
+    font-size: 16px;
+    color: #AAABC3;
+    line-height: 8px;
 }
