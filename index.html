@@ -55,10 +55,23 @@
     <!-- We can have a default search value if its easier too, e.g. the page always defaults to Lake Tahoe or something before the user searches -->
 
     <!-- Map widget should be present by default -->
-    <div id="mapWidget"></div>
+    <div id="map"></div>
 
     <!-- Shows the number of results, should be added after searching -->
     <div id="resultNumbers"></div>
+
+        <!-- <iframe id="googleMap"
+    width="600"
+    height="450"
+    style="border:0"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDTwqM7_-qLz36N8q_sT8nJrOfFWQxwlWw
+        &q=California
+        ">
+    </iframe> -->
+
 
     <!-- These three will show the location and should appear after searching, if we have more, maybe just have a scroll bar and append more elements with ids 4, 5, 6, etc. -->
     <!-- These ones definitely need the most editing since they will be generated dynamically and have to include data from locations -->
@@ -148,5 +161,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTwqM7_-qLz36N8q_sT8nJrOfFWQxwlWw&callback=initMap&v=weekly" defer></script>
 </body>
 </html>

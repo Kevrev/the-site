@@ -41,6 +41,12 @@ header {
     border-color: #aaabc3;
 }
 
+
+#map {
+    height: 400px; 
+    width: 400px;
+} 
+
 .card {
     width: 500px;
     height: 120px;
