@@ -7,6 +7,10 @@ header {
     background-color: rgba(90, 170, 228, 1);
 }
 
+ul {
+    list-style-type: none;
+}
+
 .websiteTitle {
     font-family: 'Carter One', cursive, sans-serif;
     font-style: normal;

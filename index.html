@@ -62,77 +62,81 @@
 
     <!-- These three will show the location and should appear after searching, if we have more, maybe just have a scroll bar and append more elements with ids 4, 5, 6, etc. -->
     <!-- These ones definitely need the most editing since they will be generated dynamically and have to include data from locations -->
-    <ul>
+    <!-- <ul>
         <li id="resultLocation-1"></li>
         <li id="resultLocation-2"></li>
         <li id="resultLocation-3"></li>
+    </ul> -->
+
+    <ul>
+        <li>
+            <!-- Example of location card 1 -->
+            <div id="resultLocation-1" class="card mb-2">
+                <div class="row g-0">
+                    <div class="col-md-4 imgContainer">
+                        <!-- Placeholder image (only shows portion of it to fit in card) -->
+                        <img
+                            src="https://fastly.picsum.photos/id/721/200/300.jpg?hmac=6g_vLTUju_TGWN7cMKTjZgzqps-JjmHIS0KSuFsgVyc"
+                            alt="Alt text"
+                            class="img-fluid rounded-start locationImage"
+                        />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title locationName">Location Name</h5>
+                            <p class="card-text locationAddress">Address, City, State, ZIP</p>
+                            <p class="card-text locationContact">Phone #, <a href="">Website hyperlink</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <!-- Example of location card 2 -->
+            <div id="resultLocation-2" class="card mb-2">
+                <div class="row g-0">
+                    <div class="col-md-4 imgContainer">
+                        <!-- Placeholder image (only shows portion of it to fit in card) -->
+                        <img
+                            src="https://fastly.picsum.photos/id/721/200/300.jpg?hmac=6g_vLTUju_TGWN7cMKTjZgzqps-JjmHIS0KSuFsgVyc"
+                            alt="Alt text"
+                            class="img-fluid rounded-start locationImage"
+                        />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title locationName">Location Name</h5>
+                            <p class="card-text locationAddress">Address, City, State, ZIP</p>
+                            <p class="card-text locationContact">Phone #, <a href="">Website hyperlink</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <!-- Example of location card 3 with fake results -->
+            <div id="resultLocation-3" class="card mb-2">
+                <div class="row g-0">
+                    <div class="col-md-4 imgContainer">
+                        <!-- Placeholder image (only shows portion of it to fit in card) -->
+                        <img
+                            src="https://media-cdn.tripadvisor.com/media/photo-s/14/89/9f/85/exterior.jpg"
+                            alt="Alt text"
+                            class="img-fluid rounded-start locationImage"
+                        />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title locationName">Tamarack Lodge and Resort</h5>
+                            <p class="card-text locationAddress">163 Twin Lakes Road, Mammoth Lakes</p>
+                            <p class="card-text locationStateZip">CA 93546</p>
+                            <p class="card-text locationContact">1 (760) 227-5742, <a href="https://www.mammothmountain.com/plan-your-trip/mammoth-hotels/tamarack-lodge">Website</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
     </ul>
-
-    <!-- Example of location card 1 -->
-    <div id="resultLocation-1" class="card mb-2">
-        <div class="row g-0">
-            <div class="col-md-4 imgContainer">
-                <!-- Placeholder image (only shows portion of it to fit in card) -->
-                <img
-                    src="https://fastly.picsum.photos/id/721/200/300.jpg?hmac=6g_vLTUju_TGWN7cMKTjZgzqps-JjmHIS0KSuFsgVyc"
-                    alt="Alt text"
-                    class="img-fluid rounded-start locationImage"
-                />
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title locationName">Location Name</h5>
-                    <p class="card-text locationAddress">Address, City, State, ZIP</p>
-                    <p class="card-text locationContact">Phone #, <a href="">Website hyperlink</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Example of location card 2 -->
-    <div id="resultLocation-2" class="card mb-2">
-        <div class="row g-0">
-            <div class="col-md-4 imgContainer">
-                <!-- Placeholder image (only shows portion of it to fit in card) -->
-                <img
-                    src="https://fastly.picsum.photos/id/721/200/300.jpg?hmac=6g_vLTUju_TGWN7cMKTjZgzqps-JjmHIS0KSuFsgVyc"
-                    alt="Alt text"
-                    class="img-fluid rounded-start locationImage"
-                />
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title locationName">Location Name</h5>
-                    <p class="card-text locationAddress">Address, City, State, ZIP</p>
-                    <p class="card-text locationContact">Phone #, <a href="">Website hyperlink</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Example of location card 3 with fake results -->
-    <div id="resultLocation-3" class="card mb-2">
-        <div class="row g-0">
-            <div class="col-md-4 imgContainer">
-                <!-- Placeholder image (only shows portion of it to fit in card) -->
-                <img
-                    src="https://media-cdn.tripadvisor.com/media/photo-s/14/89/9f/85/exterior.jpg"
-                    alt="Alt text"
-                    class="img-fluid rounded-start locationImage"
-                />
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title locationName">Tamarack Lodge and Resort</h5>
-                    <p class="card-text locationAddress">163 Twin Lakes Road, Mammoth Lakes</p>
-                    <p class="card-text locationStateZip">CA 93546</p>
-                    <p class="card-text locationContact">1 (760) 227-5742, <a href="https://www.mammothmountain.com/plan-your-trip/mammoth-hotels/tamarack-lodge">Website</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 
 
 
@@ -149,6 +153,10 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
     <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTwqM7_-qLz36N8q_sT8nJrOfFWQxwlWw&callback=initMap&v=weekly" defer></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkvVGVctQjYfD_g-BXkg5BuNXPVZM56Wc&callback=initMap&v=weekly" 
+    defer></script>
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkvVGVctQjYfD_g-BXkg5BuNXPVZM56Wc&libraries=places&callback=initMap">
+</script>
 </body>
 </html>
