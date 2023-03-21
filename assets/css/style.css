@@ -25,13 +25,15 @@ ul {
 /* Format banner better and so image isn't blurry */
 .banner {
     background-image: url('../images/Banner.png');
-    background-repeat:no-repeat;
-    width: auto;
-    height: 95dsdvh;
-    margin-bottom: 0px
+    background-repeat:no-repeat; 
+    width: 100%;
+    margin-bottom: 5px; 
 }
 
 .searchBar {
+    margin-top: 300px;
+    margin-right: auto;
+    margin-left: auto;
     width: 388px;
 }
 
@@ -47,8 +49,12 @@ ul {
 
 
 #map {
-    height: 400px; 
-    width: 400px;
+    height: 500px; 
+    width: 40%;
+    display: block;
+    /* margin-top: 250px; */
+    margin-left: auto;
+    margin-right: auto;
 } 
 
 .card {
