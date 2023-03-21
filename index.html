@@ -40,12 +40,14 @@
         <!-- sets width (searchBar) -->
         <div class="searchBar input-group rounded">
             <!-- Actual input part, rounds search button too -->
-            <input id="locationSearch" type="search" class="form-control rounded" placeholder="Search by location..." aria-label="Search" aria-describedby="search-addon"/>
+            <input id="locationSearch" type="text" class="form-control rounded" placeholder="Search by location..." aria-label="Search" aria-describedby="search-addon"/>
             <span class="input-group-text border-0" id="search-addon">
             <i class="fas fa-search"></i>
             </span>
         </div>
     </div>
+
+
 
     <!-- Horizontal line divider -->
     <hr class="hr" />
@@ -152,11 +154,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
-    <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkvVGVctQjYfD_g-BXkg5BuNXPVZM56Wc&callback=initMap&v=weekly" 
-    defer></script>
-    <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkvVGVctQjYfD_g-BXkg5BuNXPVZM56Wc&libraries=places&callback=initMap">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkvVGVctQjYfD_g-BXkg5BuNXPVZM56Wc&libraries=places&callback=initialize"></script>
 </script>
 </body>
 </html>
