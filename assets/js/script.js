@@ -8,11 +8,6 @@ function initMap() {
     zoom: 5,
     center: california,
     });
-    // The marker, positioned at California
-    const marker = new google.maps.Marker({
-    position: california,
-    map: map,
-    });
 }
 
 
@@ -23,7 +18,7 @@ function initMap() {
     autocomplete = new google.maps.places.Autocomplete(
         document.getElementById('locationSearch'),
         {
-            types: ['lodging'],
+            types: ['(regions)'],
             componentRestrictions: {'country': ['US']},
             fields: ['place_id', 'geometry', 'name']
         });
