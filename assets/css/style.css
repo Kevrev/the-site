@@ -48,10 +48,18 @@ header {
     height: 500px; 
     width: 40%;
     display: block;
+    position: relative;
+    left: 5%;
     /* margin-top: 250px; */
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: 200px;
+    margin-right: auto; */
 } 
+
+.container {
+    position: absolute;
+    left: 53.5%;
+    top: 84.5%;
+}
 
 .card {
     width: 500px;
@@ -59,7 +67,8 @@ header {
     background: #FFFFFF;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    ;
+    /* position: relative; */
+    /* left: 53%; */
 }
 
 .imgContainer {
