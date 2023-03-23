@@ -83,8 +83,18 @@ function createMarker(place, map) {
 
     // Create info window content
     let content = '<strong>' + place.name + '</strong><br/>' +
-                  place.vicinity + '<br/>' +
-                  '<a href="https://www.google.com/maps/place/?q=place_id:' + place.place_id + '" target="_blank">View on Google Maps</a>';
+    place.vicinity + '<br/>' +
+    '<a href="https://www.google.com/maps/place/?q=place_id:' + place.place_id + '" target="_blank">View on Google Maps</a><br/>';
+
+    if (place.photos && place.photos.length > 0) {
+    const photoUrl = place.photos[0].getUrl({
+        maxWidth: 150,
+        maxHeight: 150
+    });
+        content += '<img src="' + photoUrl + '"/><br/>';
+    } else {
+        content += '<em>No image available</em><br/>';
+    }
 
     // Creates info window and sets the content
     let infoWindow = new google.maps.InfoWindow({
