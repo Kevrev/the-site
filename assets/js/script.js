@@ -1,6 +1,7 @@
 // Initialize and add the map
     
 function initMap() {
+    
     // The location of California
     const california = { lat: 36.778, lng: -119.417 };
     // The map, centered at California
@@ -9,50 +10,107 @@ function initMap() {
     center: california,
     });
 
-    var searchBox = new google.maps.places.SearchBox(
-        document.getElementById("locationSearch")
-      );
-      google.maps.event.addListener(searchBox, "places_changed", function () {
-        searchBox.set("map", null);
-    
-        var places = searchBox.getPlaces();
-    
-        var bounds = new google.maps.LatLngBounds();
-        var i, place;
-        for (i = 0; (place = places[i]); i++) {
-          (function (place) {
-            var marker = new google.maps.Marker({
-              position: place.geometry.location,
+
+// This is creating the searchbox
+let searchBox = new google.maps.places.SearchBox(
+    document.getElementById("locationSearch")
+    );
+
+// Fires when an input is made or prediction is picked   
+    google.maps.event.addListener(searchBox, "places_changed", () => {
+    const places = searchBox.getPlaces();
+
+    if (places.length === 0) {
+        return;
+    }
+
+    // Get the latitude and longitude of the entered location
+    const location = places[0].geometry.location;
+
+    // Search for ski resorts nearby the location
+    const service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(
+        {
+        location: location,
+        // Searches in a 50km radius
+        radius: 50000,
+        keyword: "ski resort",
+        },
+        (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+            // Clear any existing markers
+            markers.forEach((marker) => {
+            marker.setMap(null);
             });
-            marker.bindTo("map", searchBox, "map");
-            google.maps.event.addListener(marker, "map_changed", function () {
-              if (!this.getMap()) {
-                this.unbindAll();
-              }
+            markers = [];
+
+            // Creats a marker for each ski resort
+            for (let i = 0; i < results.length; i++) {
+            createMarker(results[i], map);
+            }
+
+            // Fits the map to the bounds of the markers
+            const bounds = new google.maps.LatLngBounds();
+            markers.forEach((marker) => {
+            bounds.extend(marker.getPosition());
             });
-            bounds.extend(place.geometry.location);
-          })(place);
+            map.fitBounds(bounds);
         }
-        map.fitBounds(bounds);
-        searchBox.set("map", map);
-        map.setZoom(Math.min(map.getZoom(), 12));
-      });
- 
+       }
+    );
+ });
 }
 
+    
+let activeMarker = null;
 
- window.initMap = initMap;
+function createMarker(place, map) {
+  let marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
+  
+  // Listens for click on marker
+  marker.addListener('click', function() {
+    // Hide the previous active marker
+    if (activeMarker) {
+      activeMarker.infoWindow.close();
+      activeMarker.setAnimation(null);
+    }
 
- let autocomplete;
- function initAutocomplete () {
-    autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById('locationSearch'),
-        {
-            types: ['(regions)'],
-            componentRestrictions: {'country': ['US']},
-            fields: ['place_id', 'geometry', 'name']
-        });
- }
+    // Set this marker as active
+    activeMarker = marker;
+
+    // Create info window content
+    let content = '<strong>' + place.name + '</strong><br/>' +
+                  place.vicinity + '<br/>' +
+                  '<a href="https://www.google.com/maps/place/?q=place_id:' + place.place_id + '" target="_blank">View on Google Maps</a>';
+
+    // Creates info window and sets the content
+    let infoWindow = new google.maps.InfoWindow({
+      content: content
+    });
+    marker.infoWindow = infoWindow;
+
+    // Opens the info window
+    infoWindow.open(map, marker);
+  });
+
+  markers.push(marker);
+}
+
+let markers = [];   
+
+// let autocomplete;
+// function initAutocomplete () {
+//     autocomplete = new google.maps.places.Autocomplete(
+//         document.getElementById('locationSearch'),
+//         {
+//             types: ['(regions)'],
+//             componentRestrictions: {'country': ['US']},
+//             fields: ['place_id', 'geometry', 'name']
+//         });
+// }
 
 
 function initialize() {
