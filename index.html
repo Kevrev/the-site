@@ -29,7 +29,7 @@
     <!-- Blue rectangle -->
     <header>
         <!-- Website Title (Have an Ice Day)-->
-        <p class="websiteTitle">Have an Ice Day</p>
+        <p class="websiteTitle">Have an Nice Day</p>
     </header>
     
     <!-- Banner image (set as background-image ) -->
@@ -69,10 +69,17 @@
 
     <!-- Map widget should be present by default -->
     <div id="map"></div>
+    <div id="sidebar">
+        <h2>Results</h2>
+        <ul id="places"></ul>
+    </div>
 
     <!-- Shows the number of results, should be added after searching -->
-    <div id="resultNumbers"></div>
-
+    <div id="listing">
+        <table id="resultsTable">
+          <tbody id="results"></tbody>
+        </table>
+    </div>
     <!-- These three will show the location and should appear after searching, if we have more, maybe just have a scroll bar and append more elements with ids 4, 5, 6, etc. -->
     <!-- These ones definitely need the most editing since they will be generated dynamically and have to include data from locations -->
     <!-- <ul>
@@ -82,29 +89,17 @@
     </ul> -->
 
     <ul class="container">
-        <li>
-            <!-- Example of location card 1 -->
-            <div id="resultLocation-1" class="card mb-2">
+        <!-- <li>
+            Example of location card 1
                 <div class="row g-0">
-                    <div class="col-md-4 imgContainer">
-                        <!-- Placeholder image (only shows portion of it to fit in card) -->
-                        <img
-                            src="https://fastly.picsum.photos/id/721/200/300.jpg?hmac=6g_vLTUju_TGWN7cMKTjZgzqps-JjmHIS0KSuFsgVyc"
-                            alt="Alt text"
-                            class="img-fluid rounded-start locationImage"
-                        />
-                    </div>
                     <div id="info-1" class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title locationName">Location Name</h5>
-                            <p class="card-text locationAddress">Address, City, State, ZIP</p>
-                            <p class="card-text locationContact">Phone #, <a href="">Website hyperlink</a></p>
+                            <h5 class="card locationName"></h5>
                         </div>
                     </div>
                 </div>
-            </div>
         </li>
-        <li>
+        <li> -->
             <!-- <div id="resultLocation-2" class="card mb-2">
                 <div class="row g-0">
                     <div class="col-md-4 imgContainer">
@@ -144,8 +139,8 @@
                     </div>
                 </div>
             </div>
-        </li>
-    </ul> -->
+         </li> -->
+    </ul> 
 
 
 
