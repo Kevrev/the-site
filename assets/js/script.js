@@ -1,19 +1,29 @@
 // Initialize and add the map
-    
+ 
+function loadLocalStorage() {
+    const lastSearch = localStorage.getItem('lastSearch');
+    if (lastSearch) {
+        // $('#locationSearch').val(lastSearch);
+        $('#lastSearch').text('Last search location: ' + lastSearch);
+    }
+};
+
+loadLocalStorage()
+
 function initMap() {
     
     // The location of California
     const california = { lat: 36.778, lng: -119.417 };
     // The map, centered at California
     const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 5,
-    center: california,
+        zoom: 5,
+        center: california,
     });
 
 
 // This is creating the searchbox
-let searchBox = new google.maps.places.SearchBox(
-    document.getElementById("locationSearch")
+    let searchBox = new google.maps.places.SearchBox(
+        document.getElementById("locationSearch")
     );
 
 // Fires when an input is made or prediction is picked   
@@ -24,17 +34,22 @@ let searchBox = new google.maps.places.SearchBox(
         return;
     }
 
+    const lastSearch = places[0].formatted_address;
+    localStorage.setItem('lastSearch', lastSearch);
+    $('#lastSearch').text('Last search location: ' + lastSearch);
+    
     // Get the latitude and longitude of the entered location
     const location = places[0].geometry.location;
 
-    // Search for ski resorts nearby the location
+    // Search for campgrounds nearby the location
     const service = new google.maps.places.PlacesService(map);
     service.nearbySearch(
         {
         location: location,
         // Searches in a 50km radius
         radius: 50000,
-        keyword: "ski resort",
+        keyword: "campground",
+        // type: ["campground"]
         },
         (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -44,7 +59,7 @@ let searchBox = new google.maps.places.SearchBox(
             });
             markers = [];
 
-            // Creats a marker for each ski resort
+            // Creates a marker for each campground
             for (let i = 0; i < results.length; i++) {
             createMarker(results[i], map);
             }
@@ -60,7 +75,6 @@ let searchBox = new google.maps.places.SearchBox(
     );
  });
 }
-
     
 let activeMarker = null;
 
@@ -153,3 +167,5 @@ function initialize() {
    initMap();
    initAutocomplete();
 }
+
+
