@@ -1,104 +1,87 @@
 header {
-    position: absolute;
-    width: 100%;
-    height: 100px;
-    left: 0px;
-    top: 0px;
-    background-color: rgba(90, 170, 228, 1);
-    text-align: center;
+  position: relative;
+  width: 100 vw;
+  height: 40vh;
+  background-color: rgb(97, 135, 90);
 }
-ul {
-    list-style-type: none;
-}
+
 .websiteTitle {
-    font-family: 'Carter One', cursive, sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 54px;
-    line-height: 83px;
-    color: #FFFFFF;
-    text-align: center;
-    padding-top: 5px;
+  position: absolute;
+  bottom: 3vh;
+  left: 3vw;
+  font-family: "Delicious Handrawn", cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 54px;
+  color: #ffffff;
+  background-color: transparent;
 }
+
 /* Format banner better and so image isn't blurry */
-.banner {
-    background-image: url('../images/Banner.png');
-    background-repeat:no-repeat;
-    width: 100%;
-    margin-bottom: 5px;
+header > img {
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 40vh;
+  object-fit: cover;
+  margin-bottom: 5px;
 }
 
 .searchBar {
-    margin-right: auto;
-    margin-left: auto;
-    width: 388px;
-    justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 3vh;
+  width: 30vw;
+  justify-content: center;
 }
 
 /* Text color of the text in the searchBar */
 .searchBar ::placeholder {
-    color: #AAABC3;
+  color: #aaabc3;
 }
 
 /* Controls the outline of the searchBar */
 .form-control {
-    border-color: #AAABC3;
+  border-color: #aaabc3;
 }
 
 #map {
-    height: 500px;
-    width: 40%;
-    display: block;
-    /* margin-top: 250px; */
-    margin-left: auto;
-    margin-right: auto;
+  height: 60vh;
+  width: 40vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+body {
+  background-color: rgb(163, 189, 163);
 }
 
-.container{
-    position: absolute;
-    left: 60%;
-    top: 93%;
-}
+/* .card {
+  width: 1000px;
+  height: 120px;
+  background: #ffffff;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  position: absolute;
+} */
 
-.card {
-    width: 1000px;
-    height: 120px;
-    background: #FFFFFF;
-    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    position:absolute;
-}
+/* .imgContainer {
+  height: 120px;
+  overflow: hidden;
+} */
 
-.imgContainer {
-    height: 120px;
-    overflow: hidden;
-}
+/* .locationImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+} */
 
-.locationImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.locationName {
-    font-family: 'Fira Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 5px;
-    color: #268EDA;
-    padding-bottom: 15px;
-}
-
-.card-text {
-    font-size: 16px;
-    color: #AAABC3;
-    line-height: 8px;
-}
-
-.test1 {
-    height: 200px;
-    width: 200px;
-    padding-top: 300px;
-}
+/* .locationName {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 5px;
+  color: #268eda;
+  padding-bottom: 15px;
+} */
