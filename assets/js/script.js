@@ -119,11 +119,13 @@ function createMarker(place, map) {
             maxWidth: 150,
             maxHeight: 150
           }) : "No image available";
+          const websiteUrl = placeDetails.website ? placeDetails.website : '';
+          const phoneNumber = placeDetails.formatted_phone_number ? placeDetails.formatted_phone_number : '';
           infoContent = '<h2>' + place.name + '</h2>' +
                         '<img src="' + photoUrl + '" alt="' + place.name + '"/>' +
                         '<p>' + place.vicinity + '</p>' +
-                        '<p>' + placeDetails.website + '</p>' +
-                        '<p>' + placeDetails.formatted_phone_number + '</p>';
+                        '<p>' + websiteUrl + '</p>' +
+                        '<p>' + phoneNumber + '</p>';
   
           infoDiv.children().find('.locationName').html(infoContent);
         }
