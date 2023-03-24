@@ -2,13 +2,16 @@
 const MARKER_PATH =
   "https://developers.google.com/maps/documentation/javascript/images/marker_green";
 
+const history = document.querySelector("#history");
 function loadLocalStorage() {
   const lastSearch = localStorage.getItem("lastSearch");
   if (lastSearch) {
     // $('#locationSearch').val(lastSearch);
-    $("#lastSearch").text("Last search location: " + lastSearch);
+    $("#lastSearch").text(lastSearch);
   }
 }
+
+history.appendChild(lastSearch);
 
 loadLocalStorage();
 
@@ -34,11 +37,9 @@ function initMap() {
       // TODO: add content: there's no result/ may adjust the redius to test
       return;
     }
-
     const lastSearch = places[0].formatted_address;
     localStorage.setItem("lastSearch", lastSearch);
-    $("#lastSearch").text("Last search location: " + lastSearch);
-
+    $("#lastSearch").text(lastSearch);
     // Get the latitude and longitude of the entered location
     const location = places[0].geometry.location;
 
@@ -103,16 +104,31 @@ function createMarker(place, map) {
     icon: markerIcon,
   });
   const placesList = document.getElementById("places");
-  const li = document.createElement("li");
+  const tr = document.createElement("tr");
+  const iconTd = document.createElement("td");
+  const nameTd = document.createElement("td");
   const icon = document.createElement("img");
 
   icon.src = markerIcon;
   icon.setAttribute("class", "placeIcon");
 
-  li.textContent = place.name;
-  placesList.appendChild(icon);
-  placesList.appendChild(li);
-  li.addEventListener("click", () => {
+  nameTd.textContent = place.name;
+
+  iconTd.appendChild(icon);
+  tr.appendChild(iconTd);
+  tr.appendChild(nameTd);
+  results.appendChild(tr);
+  // //stop now!
+  // const li = document.createElement("li");
+  // const icon = document.createElement("img");
+
+  // icon.src = markerIcon;
+  // icon.setAttribute("class", "placeIcon");
+
+  // li.textContent = place.name;
+  // placesList.appendChild(icon);
+  // placesList.appendChild(li);
+  tr.addEventListener("click", () => {
     map.setCenter(place.geometry.location);
   });
 

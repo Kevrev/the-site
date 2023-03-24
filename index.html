@@ -22,20 +22,16 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
     rel="stylesheet"
     />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Gloria+Hallelujah&family=Zeyada&display=swap" rel="stylesheet">    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Have A Nice Day</title>
 </head>
 <body>
-    <!-- Blue rectangle -->
+    <!-- Banner image (set as background-image ) -->
     <header>
-        <!-- Website Title (Have an Ice Day)-->
-        <p class="websiteTitle">Have an Nice Day</p>
+        <img src="./assets/images/CampingInYosemite.jpg" />
+        <h1 class="websiteTitle">Have a Nice Day</h1>
     </header>
     
-    <!-- Banner image (set as background-image ) -->
-    <div class="banner">
-        <img src="./assets/images/Banner.png" style="width:100%;"/>
-    </div>
 
     <!-- Centers search button -->
     <div class="row justify-content-center">
@@ -68,17 +64,18 @@
     <!-- We can have a default search value if its easier too, e.g. the page always defaults to Lake Tahoe or something before the user searches -->
 
     <!-- Map widget should be present by default -->
-    <div id="map"></div>
-    <div id="sidebar">
-        <h2>Results</h2>
-        <ul id="places"></ul>
-    </div>
-
-    <!-- Shows the number of results, should be added after searching -->
-    <div id="listing">
-        <table id="resultsTable">
-          <tbody id="results"></tbody>
-        </table>
+    <div class="container mh-30">
+        <div class="row">
+            <div id="history" class="col-md-2 gx-3 mb-4">Search History</div>
+            <div id="map" class="col-md-5 gx-3 mb-4"></div>
+            
+            <!-- Shows the number of results, should be added after searching -->
+            <div id="listing" class="col-md-4 gx-3 mb-4">
+                <table id="resultsTable">Result
+                <tbody id="results"></tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <!-- These three will show the location and should appear after searching, if we have more, maybe just have a scroll bar and append more elements with ids 4, 5, 6, etc. -->
     <!-- These ones definitely need the most editing since they will be generated dynamically and have to include data from locations -->
@@ -88,7 +85,7 @@
         <li id="resultLocation-3"></li>
     </ul> -->
 
-    <ul class="container">
+    <!-- <ul class="container"> -->
         <!-- <li>
             Example of location card 1
                 <div class="row g-0">
@@ -140,7 +137,7 @@
                 </div>
             </div>
          </li> -->
-    </ul> 
+    <!-- </ul>  -->
 
 
 

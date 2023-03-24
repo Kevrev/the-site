@@ -1,37 +1,36 @@
 header {
-  position: absolute;
-  width: 100%;
-  height: 100px;
-  left: 0px;
-  top: 0px;
-  background-color: rgba(90, 170, 228, 1);
-  text-align: center;
+  position: relative;
+  width: 100 vw;
+  height: 40vh;
+  background-color: rgb(97, 135, 90);
 }
-ul {
-  list-style-type: none;
-}
+
 .websiteTitle {
-  font-family: "Carter One", cursive, sans-serif;
+  position: absolute;
+  bottom: 3vh;
+  left: 3vw;
+  font-family: "Delicious Handrawn", cursive;
   font-style: normal;
   font-weight: 400;
   font-size: 54px;
-  line-height: 83px;
   color: #ffffff;
-  text-align: center;
-  padding-top: 5px;
+  background-color: transparent;
 }
+
 /* Format banner better and so image isn't blurry */
-.banner {
-  background-image: url("../images/Banner.png");
+header > img {
   background-repeat: no-repeat;
-  width: 100%;
+  width: 100vw;
+  height: 40vh;
+  object-fit: cover;
   margin-bottom: 5px;
 }
 
 .searchBar {
   margin-right: auto;
   margin-left: auto;
-  width: 388px;
+  margin-top: 3vh;
+  width: 30vw;
   justify-content: center;
 }
 
@@ -46,42 +45,38 @@ ul {
 }
 
 #map {
-  height: 500px;
-  width: 40%;
+  height: 60vh;
+  width: 40vw;
   display: block;
-  /* margin-top: 250px; */
   margin-left: auto;
   margin-right: auto;
 }
-
-.container {
-  position: absolute;
-  left: 60%;
-  top: 93%;
+body {
+  background-color: rgb(163, 189, 163);
 }
 
-.card {
+/* .card {
   width: 1000px;
   height: 120px;
   background: #ffffff;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   position: absolute;
-}
+} */
 
-.imgContainer {
+/* .imgContainer {
   height: 120px;
   overflow: hidden;
-}
+} */
 
-.locationImage {
+/* .locationImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-}
+} */
 
-.locationName {
+/* .locationName {
   font-family: "Fira Sans";
   font-style: normal;
   font-weight: 400;
@@ -89,10 +84,4 @@ ul {
   line-height: 5px;
   color: #268eda;
   padding-bottom: 15px;
-}
-
-.test1 {
-  height: 200px;
-  width: 200px;
-  padding-top: 300px;
-}
+} */
