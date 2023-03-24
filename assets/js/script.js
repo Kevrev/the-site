@@ -122,7 +122,7 @@ function createMarker(place, map) {
                         '<p>' + placeDetails.website + '</p>' +
                         '<p>' + placeDetails.formatted_phone_number + '</p>';
   
-          infoDiv.children().children().html(infoContent);
+          infoDiv.children().find('.locationName').html(infoContent);
         }
       });
     });
