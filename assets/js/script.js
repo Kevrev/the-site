@@ -98,16 +98,37 @@ function createMarker(place, map) {
 
     // Creates info window and sets the content
     let infoWindow = new google.maps.InfoWindow({
-      content: content
+        content: content
+      });
+      marker.infoWindow = infoWindow;
+  
+      // Opens the info window
+      infoWindow.open(map, marker);
+  
+      // Get additional details for the place
+      let service = new google.maps.places.PlacesService(map);
+      let request = {
+        placeId: place.place_id,
+        fields: ['website', 'formatted_phone_number']
+      };
+  
+      service.getDetails(request, function(placeDetails, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          const infoDiv = $('#info-1');
+          const photoUrl = place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : "No image available";
+          infoContent = '<h2>' + place.name + '</h2>' +
+                        '<img src="' + photoUrl + '" alt="' + place.name + '"/>' +
+                        '<p>' + place.vicinity + '</p>' +
+                        '<p>' + placeDetails.website + '</p>' +
+                        '<p>' + placeDetails.formatted_phone_number + '</p>';
+  
+          infoDiv.children().children().html(infoContent);
+        }
+      });
     });
-    marker.infoWindow = infoWindow;
-
-    // Opens the info window
-    infoWindow.open(map, marker);
-  });
-
-  markers.push(marker);
-}
+  
+    markers.push(marker);
+  }
 
 let markers = [];   
 
