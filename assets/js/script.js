@@ -115,7 +115,10 @@ function createMarker(place, map) {
       service.getDetails(request, function(placeDetails, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           const infoDiv = $('#info-1');
-          const photoUrl = place.photos && place.photos.length > 0 ? place.photos[0].getUrl() : "No image available";
+          const photoUrl = place.photos && place.photos.length > 0 ? place.photos[0].getUrl({
+            maxWidth: 150,
+            maxHeight: 150
+          }) : "No image available";
           infoContent = '<h2>' + place.name + '</h2>' +
                         '<img src="' + photoUrl + '" alt="' + place.name + '"/>' +
                         '<p>' + place.vicinity + '</p>' +
