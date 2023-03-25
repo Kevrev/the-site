@@ -135,9 +135,18 @@ function createMarker(place, map) {
               $imgDiv.append($img);
 
 
-    $outerDiv.on('click', function() {
-      map.setCenter(place.geometry.location);
-    });
+            $outerDiv.on('click', function() {
+              map.setCenter(place.geometry.location);
+              const infowindow = new google.maps.InfoWindow({
+                content: 'You are here',
+                position: place.geometry.location,
+                pixelOffset: new google.maps.Size(0, -32)
+              });
+              infowindow.open(map);
+              setTimeout(function() {
+                infowindow.close();
+              }, 2000); 
+            });
 
       $(".placeContainer").append($outerDiv);
     }
@@ -161,10 +170,6 @@ function createMarker(place, map) {
   results.appendChild(tr);
 
   tr.addEventListener("click", () => {
-    map.setCenter(place.geometry.location);
-  });
-
-  $('.card').on('click', function() {
     map.setCenter(place.geometry.location);
   });
 
