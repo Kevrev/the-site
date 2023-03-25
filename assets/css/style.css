@@ -5,6 +5,10 @@ header {
   background-color: rgb(97, 135, 90);
 }
 
+a {
+  color: #63865c;
+}
+
 .websiteTitle {
   position: absolute;
   bottom: 3vh;
@@ -62,7 +66,8 @@ body {
 }
 
 .card {
-  width: 600px;
+  /* width: 600px; */
+  width: 500px;
   height: 120px;
   background: #ffffff;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
@@ -86,15 +91,36 @@ body {
   font-family: "Fira Sans";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 18px;
+  /* line-height: 5px; */
+  color: #0c0b08bf;
+  padding-bottom: 10px;
+}
+
+.locationAddress {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
   line-height: 5px;
-  color: #268eda;
-  padding-bottom: 15px;
+  color: #9091ac;
+}
+
+.locationContact {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 5px;
+  color: #9091ac;
+  padding-bottom: 5px;
 }
 
 .placeContainer {
-  width: 650px;
+  width: 575px;
   height: 60vh;
 }
 
-#lastSearch {}
+.card-body {
+  padding: 14px 24px 24px 20px;
+}
