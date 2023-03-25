@@ -1,19 +1,14 @@
 // Initialize and add the map
 const MARKER_PATH =
   "https://developers.google.com/maps/documentation/javascript/images/marker_green";
+// const history = document.querySelector("#history");
 
-const history = document.querySelector("#history");
-function loadLocalStorage() {
-  const lastSearch = localStorage.getItem("lastSearch");
-  if (lastSearch) {
-    // $('#locationSearch').val(lastSearch);
-    $("#lastSearch").text(lastSearch);
-  }
+let storedHistory = JSON.parse(localStorage.getItem("lastSearch")) || [];
+
+let historyEl = $("#history");
+for (var i = 0; i < 15; i++) {
+  $("<li>").text(storedHistory[i]).appendTo(historyEl);
 }
-
-history.appendChild(lastSearch);
-
-loadLocalStorage();
 
 function initMap() {
   // The location of California
@@ -38,8 +33,30 @@ function initMap() {
       return;
     }
     const lastSearch = places[0].formatted_address;
-    localStorage.setItem("lastSearch", lastSearch);
-    $("#lastSearch").text(lastSearch);
+    let historyValue = lastSearch;
+    storedHistory.unshift(historyValue);
+
+    localStorage.setItem(
+      "lastSearch",
+      JSON.stringify(storedHistory.slice(0, 15))
+    );
+
+    // for (let i = 1; i < storedHistory.length; i++) {
+    //   // let listItem = $("<li>").text(storedHistory[i]);
+    //   let listItem = document.createElement("li");
+    //   listItem.text(storedHistory[i]);
+
+    //   historyEl.append(listItem);
+    // }
+
+    // let historyEl = $("#histroy");
+    // // historyList.empty();
+    // storedHistory.forEach((element) => {
+    //   let listItem = $("<li>").text(element);
+    //   historyEl.append(listItem);
+    // });
+    // // $("#lastSearch").text(lastSearch);
+
     // Get the latitude and longitude of the entered location
     const location = places[0].geometry.location;
 
@@ -53,9 +70,12 @@ function initMap() {
         keyword: "campground",
         // type: ["campground"]
       },
+
       (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
-          // Clear any existing markers
+          clearResults(); // Clear any existing markers on the map on the lise TODO: fix the label rotation issue
+
+          // Clear any existing markers on the map
           markers.forEach((marker) => {
             marker.setMap(null);
           });
@@ -63,7 +83,7 @@ function initMap() {
 
           // Creates a marker for each campground
           for (let i = 0; i < results.length; i++) {
-            createMarker(results[i], map);
+            createMarker(results[i], map, i);
 
             // const placesList = document.getElementById("places");
             // const li = document.createElement("li");
@@ -89,13 +109,11 @@ function initMap() {
 let activeMarker = null;
 
 let labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let labelIndex = 0;
 
 // const markerIcon = MARKER_PATH + labels[labelIndex++ % labels.length] + ".png";
 
-function createMarker(place, map) {
-  const markerIcon =
-    MARKER_PATH + labels[labelIndex++ % labels.length] + ".png";
+function createMarker(place, map, labelIndex) {
+  const markerIcon = MARKER_PATH + labels[labelIndex % labels.length] + ".png";
   let marker = new google.maps.Marker({
     map: map,
     // label: labels[labelIndex++ % labels.length], // add label to the markers
@@ -103,7 +121,7 @@ function createMarker(place, map) {
     position: place.geometry.location,
     icon: markerIcon,
   });
-  const placesList = document.getElementById("places");
+
   const tr = document.createElement("tr");
   const iconTd = document.createElement("td");
   const nameTd = document.createElement("td");
@@ -118,16 +136,7 @@ function createMarker(place, map) {
   tr.appendChild(iconTd);
   tr.appendChild(nameTd);
   results.appendChild(tr);
-  // //stop now!
-  // const li = document.createElement("li");
-  // const icon = document.createElement("img");
 
-  // icon.src = markerIcon;
-  // icon.setAttribute("class", "placeIcon");
-
-  // li.textContent = place.name;
-  // placesList.appendChild(icon);
-  // placesList.appendChild(li);
   tr.addEventListener("click", () => {
     map.setCenter(place.geometry.location);
   });
@@ -178,6 +187,14 @@ function createMarker(place, map) {
 }
 
 let markers = [];
+
+function clearResults() {
+  const results = document.getElementById("results");
+
+  while (results.childNodes[0]) {
+    results.removeChild(results.childNodes[0]);
+  }
+}
 
 function initialize() {
   initMap();
