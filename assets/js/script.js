@@ -1,19 +1,12 @@
 // Initialize and add the map
 const MARKER_PATH =
   "https://developers.google.com/maps/documentation/javascript/images/marker_green";
+let storedHistory = JSON.parse(localStorage.getItem("historyValue")) || [];
+let historyEl = $("#history");
 
-const history = document.querySelector("#history");
-function loadLocalStorage() {
-  const lastSearch = localStorage.getItem("lastSearch");
-  if (lastSearch) {
-    // $('#locationSearch').val(lastSearch);
-    $("#lastSearch").text(lastSearch);
-  }
+for (var i = 0; i < 15; i++) {
+  $("<div>").text(storedHistory[i]).appendTo(historyEl);
 }
-
-// history.appendChild(lastSearch);
-
-loadLocalStorage();
 
 function initMap() {
   // The location of California
@@ -37,9 +30,17 @@ function initMap() {
       // TODO: add content: there's no result/ may adjust the redius to test
       return;
     }
-    const lastSearch = places[0].formatted_address;
-    localStorage.setItem("lastSearch", lastSearch);
-    $("#lastSearch").text(lastSearch);
+
+    let historyValue = places[0].formatted_address;
+    storedHistory.unshift(historyValue);
+
+    localStorage.setItem(
+      "historyValue",
+      JSON.stringify(storedHistory.slice(0, 15))
+    );
+
+    $("<div>").text(historyValue).prependTo(historyEl);
+
     // Get the latitude and longitude of the entered location
     const location = places[0].geometry.location;
 
@@ -53,9 +54,12 @@ function initMap() {
         keyword: "campground",
         // type: ["campground"]
       },
+
       (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
-          // Clear any existing markers
+          clearResults(); // Clear any existing markers on the map on the lise TODO: fix the label rotation issue
+
+          // Clear any existing markers on the map
           markers.forEach((marker) => {
             marker.setMap(null);
           });
@@ -63,15 +67,7 @@ function initMap() {
 
           // Creates a marker for each campground
           for (let i = 0; i < results.length; i++) {
-            createMarker(results[i], map);
-
-            // const placesList = document.getElementById("places");
-            // const li = document.createElement("li");
-            // li.textContent = places.name;
-            // placesList.appendChild(li);
-            // li.addEventListener("click", () => {
-            //   map.setCenter(places[i].geometry.location);
-            // });
+            createMarker(results[i], map, i);
           }
 
           // Fits the map to the bounds of the markers
@@ -89,71 +85,19 @@ function initMap() {
 let activeMarker = null;
 
 let labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let labelIndex = 0;
 
 // const markerIcon = MARKER_PATH + labels[labelIndex++ % labels.length] + ".png";
 
-function createMarker(place, map) {
-  const markerIcon =
-    MARKER_PATH + labels[labelIndex++ % labels.length] + ".png";
+function createMarker(place, map, labelIndex) {
+  const markerIcon = MARKER_PATH + labels[labelIndex % labels.length] + ".png";
   let marker = new google.maps.Marker({
     map: map,
+    // label: labels[labelIndex++ % labels.length], // add label to the markers
+    animation: google.maps.Animation.DROP, // add animation to the markers
     position: place.geometry.location,
     icon: markerIcon,
   });
-  
-  let service = new google.maps.places.PlacesService(map);
-  let request = {
-      placeId: place.place_id,
-      fields: ['website', 'formatted_phone_number']
-    };
-    
-  service.getDetails(request, function(placeDetails, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      const photoUrl = place.photos && place.photos.length > 0 ? place.photos[0].getUrl({
-        maxWidth: 150,
-        maxHeight: 150
-      }) : "No image available";
-      const websiteUrl = placeDetails.website ? placeDetails.website : '';
-      const phoneNumber = placeDetails.formatted_phone_number ? placeDetails.formatted_phone_number : '';
-      var $outerDiv = $("<div>").attr("id", "resultLocation-2").addClass("card mb-2");
-      var $rowDiv = $("<div>").addClass("row g-0");
-      var $imgDiv = $("<div>").addClass("col-md-4 imgContainer");
-      var $img = $("<img>").attr("src", photoUrl).addClass("rounded-start locationImage");
-      var $cardBodyDiv = $("<div>").addClass("col-md-8").addClass("card-body");
-      var $locationName = $("<h5>").addClass("card-title locationName").text(place.name);
-      var $locationAddress = $("<p>").addClass("card-text locationAddress").text(place.vicinity);
-      var $locationContact = $("<p>").addClass("card-text locationContact").text(phoneNumber);
-      var $websiteLink = $("<a>").attr({"href": websiteUrl, "target": "_blank"}).text(" Website Homepage ");
-      var $externalLinkIcon = $("<i>").addClass("fa fa-external-link").attr("aria-hidden", "true");
-      $websiteLink.append($externalLinkIcon);
 
-      $locationContact.append($websiteLink);
-        $cardBodyDiv.append($locationName).append($locationAddress).append($locationContact);
-          $rowDiv.append($imgDiv).append($cardBodyDiv);
-            $outerDiv.append($rowDiv);
-              $imgDiv.append($img);
-
-
-            $outerDiv.on('click', function() {
-              map.setCenter(place.geometry.location);
-              const infowindow = new google.maps.InfoWindow({
-                content: 'You are here',
-                position: place.geometry.location,
-                pixelOffset: new google.maps.Size(0, -32)
-              });
-              infowindow.open(map);
-              setTimeout(function() {
-                infowindow.close();
-              }, 2000); 
-            });
-
-      $(".placeContainer").append($outerDiv);
-    }
-  });
-  
-
-  const placesList = document.getElementById("places");
   const tr = document.createElement("tr");
   const iconTd = document.createElement("td");
   const nameTd = document.createElement("td");
@@ -162,7 +106,7 @@ function createMarker(place, map) {
   icon.src = markerIcon;
   icon.setAttribute("class", "placeIcon");
 
-  nameTd.textContent = place.name + place.vicinity;
+  nameTd.textContent = place.name;
 
   iconTd.appendChild(icon);
   tr.appendChild(iconTd);
@@ -213,37 +157,20 @@ function createMarker(place, map) {
 
     // Opens the info window
     infoWindow.open(map, marker);
-          // Get additional details for the place
-          let service = new google.maps.places.PlacesService(map);
-          let request = {
-            placeId: place.place_id,
-            fields: ['website', 'formatted_phone_number']
-          };
-      
-          service.getDetails(request, function(placeDetails, status) {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-              const infoDiv = $('#info-1');
-              const photoUrl = place.photos && place.photos.length > 0 ? place.photos[0].getUrl({
-                maxWidth: 150,
-                maxHeight: 150
-              }) : "No image available";
-              const websiteUrl = placeDetails.website ? placeDetails.website : '';
-              const phoneNumber = placeDetails.formatted_phone_number ? placeDetails.formatted_phone_number : '';
-              infoContent = '<h2>' + place.name + '</h2>' +
-                            '<img src="' + photoUrl + '" alt="' + place.name + '"/>' +
-                            '<p>' + place.vicinity + '</p>' +
-                            '<p>' + websiteUrl + '</p>' +
-                            '<p>' + phoneNumber + '</p>';
-      
-              infoDiv.children().find('.locationName').html(infoContent);
-            }
-          });
   });
 
   markers.push(marker);
 }
 
 let markers = [];
+
+function clearResults() {
+  const results = document.getElementById("results");
+
+  while (results.childNodes[0]) {
+    results.removeChild(results.childNodes[0]);
+  }
+}
 
 function initialize() {
   initMap();
