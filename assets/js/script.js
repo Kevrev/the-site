@@ -1,13 +1,11 @@
 // Initialize and add the map
 const MARKER_PATH =
   "https://developers.google.com/maps/documentation/javascript/images/marker_green";
-// const history = document.querySelector("#history");
-
-let storedHistory = JSON.parse(localStorage.getItem("lastSearch")) || [];
-
+let storedHistory = JSON.parse(localStorage.getItem("historyValue")) || [];
 let historyEl = $("#history");
+
 for (var i = 0; i < 15; i++) {
-  $("<li>").text(storedHistory[i]).appendTo(historyEl);
+  $("<div>").text(storedHistory[i]).appendTo(historyEl);
 }
 
 function initMap() {
@@ -32,30 +30,16 @@ function initMap() {
       // TODO: add content: there's no result/ may adjust the redius to test
       return;
     }
-    const lastSearch = places[0].formatted_address;
-    let historyValue = lastSearch;
+
+    let historyValue = places[0].formatted_address;
     storedHistory.unshift(historyValue);
 
     localStorage.setItem(
-      "lastSearch",
+      "historyValue",
       JSON.stringify(storedHistory.slice(0, 15))
     );
 
-    // for (let i = 1; i < storedHistory.length; i++) {
-    //   // let listItem = $("<li>").text(storedHistory[i]);
-    //   let listItem = document.createElement("li");
-    //   listItem.text(storedHistory[i]);
-
-    //   historyEl.append(listItem);
-    // }
-
-    // let historyEl = $("#histroy");
-    // // historyList.empty();
-    // storedHistory.forEach((element) => {
-    //   let listItem = $("<li>").text(element);
-    //   historyEl.append(listItem);
-    // });
-    // // $("#lastSearch").text(lastSearch);
+    $("<div>").text(historyValue).prependTo(historyEl);
 
     // Get the latitude and longitude of the entered location
     const location = places[0].geometry.location;
@@ -84,14 +68,6 @@ function initMap() {
           // Creates a marker for each campground
           for (let i = 0; i < results.length; i++) {
             createMarker(results[i], map, i);
-
-            // const placesList = document.getElementById("places");
-            // const li = document.createElement("li");
-            // li.textContent = places.name;
-            // placesList.appendChild(li);
-            // li.addEventListener("click", () => {
-            //   map.setCenter(places[i].geometry.location);
-            // });
           }
 
           // Fits the map to the bounds of the markers
@@ -199,21 +175,3 @@ function clearResults() {
 function initialize() {
   initMap();
 }
-
-// function addResults() {
-//   const markerLetter = String.fromCharCode("A".charCodeAt(0) + (i % 26));
-//   const markerIcon = MARKER_PATH + markerLetter + ".png";
-//   const tableResult = $("<div>");
-
-//   tableResult
-//     .attr("backgroundColor", 'i % 2 === 0 ? "#a7c5ac" : "#FFFFFF"')
-//     .on("click", function () {
-//       google.maps.event.trigger(markers[i], "click");
-//     });
-
-//   const name = document.createTextNode(results.name);
-
-//   tableResult.append(markerIcon);
-//   tableResult.append(name);
-//   result.append(tableResult);
-// }
