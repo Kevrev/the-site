@@ -28,7 +28,7 @@
       href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Gloria+Hallelujah&family=Zeyada&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./assets/css/CampingSite.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Have A Nice Day</title>
   </head>
   <body>
@@ -39,7 +39,7 @@
     </header>
 
     <!-- Centers search button -->
-    <div class="row justify-content-center">
+    <div class="row justify-content-center searchBarContainer">
       <!-- sets width (searchBar) -->
       <div class="searchBar input-group rounded">
         <!-- Actual input part, rounds search button too -->
@@ -57,11 +57,6 @@
       </div>
     </div>
 
-    <div class="row justify-content-center" style="height: 1vh">
-      <!-- sets width (searchBar) -->
-      <div class="searchBar input-group rounded"></div>
-    </div>
-
     <!-- Horizontal line divider -->
     <hr class="hr" />
 
@@ -69,14 +64,29 @@
     <!-- We can have a default search value if its easier too, e.g. the page always defaults to Lake Tahoe or something before the user searches -->
 
     <!-- Map widget should be present by default -->
-    <div class="container mh-30">
-      <div class="row">
-        <div id="historyList" class="col-md-3 col-sm-10 gx-3 mb-4">
-          Search History
-          <div id="history"></div>
+  
+    <div class="content">
+      <div class="container-fluid d-flex">
+        <div class="row">
+          <div class="col-md-3">
+            <div id="historyList" class="">
+              Search History
+              <div id="history"></div>
+              <button id="clearHistory" type="button" class="btn btn-warning">Clear History</button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div id="map" class="me-"></div>
+          </div>
+          <div class="col-md-3">
+            <div id="cardList" class="placeContainer overflow-auto"></div> 
+          </div>
         </div>
-        <div id="map" class="col-md-5 col-sm-10 gx-3 mb-4"></div>
+      </div>
+    </div>
 
+
+    
         <!-- Shows the number of results, should be added after searching -->
         <div id="listing" class="col-md-3 col-sm-10 gx-3 mb-4">
           <table id="resultsTable">
@@ -88,14 +98,14 @@
     </div>
 
     <!-- Displays the forecast for the selected location -->
-    <!-- <div id="weatherWidget"></div>
+    <!-- <div id="weatherWidget"></div> -->
 
-    <hr class="hr" />
+    <!-- <hr class="hr" /> -->
 
-    <footer class="apiLinks">//icon and link of apis</footer> -->
+    <!-- <footer class="apiLinks">//icon and link of apis</footer> -->
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
-    <script src="./assets/js/CampingSite.js"></script>
+    <script src="./assets/js/script.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYyYltLAg7ukRHj_iMyMqjY_HNW4xYL4A&libraries=places&callback=initialize"></script>
   </body>
 </html>

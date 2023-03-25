@@ -4,6 +4,11 @@ const MARKER_PATH =
 let storedHistory = JSON.parse(localStorage.getItem("historyValue")) || [];
 let historyEl = $("#history");
 
+$('#clearHistory').on('click', function() {
+  localStorage.clear();
+  historyEl.empty();
+});
+
 for (var i = 0; i < 15; i++) {
   $("<div>").text(storedHistory[i]).appendTo(historyEl);
 }
@@ -89,33 +94,84 @@ let labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 // const markerIcon = MARKER_PATH + labels[labelIndex++ % labels.length] + ".png";
 
 function createMarker(place, map, labelIndex) {
-  const markerIcon = MARKER_PATH + labels[labelIndex % labels.length] + ".png";
+const markerIcon =
+    MARKER_PATH + labels[labelIndex++ % labels.length] + ".png";
   let marker = new google.maps.Marker({
     map: map,
-    // label: labels[labelIndex++ % labels.length], // add label to the markers
-    animation: google.maps.Animation.DROP, // add animation to the markers
     position: place.geometry.location,
     icon: markerIcon,
   });
+  
+  let service = new google.maps.places.PlacesService(map);
+  let request = {
+      placeId: place.place_id,
+      fields: ['website', 'formatted_phone_number', 'rating']
+    };
+    
+  service.getDetails(request, function(placeDetails, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      const photoUrl = place.photos && place.photos.length > 0 ? place.photos[0].getUrl({
+        maxWidth: 150,
+        maxHeight: 150
+      }) : "./assets/images/noimage2.png";
+      const websiteUrl = placeDetails.website ? placeDetails.website : '';
+      const phoneNumber = placeDetails.formatted_phone_number ? placeDetails.formatted_phone_number : '';
+      const userRating = placeDetails.rating ? placeDetails.rating : "No User Rating Available";
+      var $outerDiv = $("<div>").attr("id", "resultLocation-2").addClass("card mb-2");
+      var $rowDiv = $("<div>").addClass("row g-0");
+      var $imgDiv = $("<div>").addClass("col-md-4 imgContainer");
+      var $img = $("<img>").attr("src", photoUrl).addClass("rounded-start locationImage");
+      var $cardBodyDiv = $("<div>").addClass("col-md-8").addClass("card-body");
+      var $locationName = $("<h5>").addClass("card-title locationName").text(place.name);
+      var $locationAddress = $("<p>").addClass("card-text locationAddress").text(place.vicinity);
+      var $locationContact = $("<p>").addClass("card-text locationContact").text(phoneNumber);
+      var $websiteLink = $("<a>").attr({"href": websiteUrl, "target": "_blank"}).text(" Website Homepage ");
+      var $externalLinkIcon = $("<i>").addClass("fa fa-external-link").attr("aria-hidden", "true");
+      var $locationRating = $("<p>").addClass("card-text locationRating").text(' User Rating: ' + userRating + ' / 5');
+      $websiteLink.append($externalLinkIcon);
 
-  const tr = document.createElement("tr");
-  const iconTd = document.createElement("td");
-  const nameTd = document.createElement("td");
-  const icon = document.createElement("img");
+      $locationContact.append($websiteLink);
+        $cardBodyDiv.append($locationName).append($locationAddress).append($locationContact).append($locationRating);
+          $rowDiv.append($imgDiv).append($cardBodyDiv);
+            $outerDiv.append($rowDiv);
+              $imgDiv.append($img);
 
-  icon.src = markerIcon;
-  icon.setAttribute("class", "placeIcon");
 
-  nameTd.textContent = place.name;
+            $outerDiv.on('click', function() {
+              map.setCenter(place.geometry.location);
+              const infowindow = new google.maps.InfoWindow({
+                content: 'You are here',
+                position: place.geometry.location,
+                pixelOffset: new google.maps.Size(0, -32)
+              });
+              infowindow.open(map);
+              setTimeout(function() {
+                infowindow.close();
+              }, 2000); 
+            });
 
-  iconTd.appendChild(icon);
-  tr.appendChild(iconTd);
-  tr.appendChild(nameTd);
-  results.appendChild(tr);
-
-  tr.addEventListener("click", () => {
-    map.setCenter(place.geometry.location);
+      $(".placeContainer").append($outerDiv);
+    }
   });
+
+  // const tr = document.createElement("tr");
+  // const iconTd = document.createElement("td");
+  // const nameTd = document.createElement("td");
+  // const icon = document.createElement("img");
+
+  // icon.src = markerIcon;
+  // icon.setAttribute("class", "placeIcon");
+
+  // nameTd.textContent = place.name;
+
+  // iconTd.appendChild(icon);
+  // tr.appendChild(iconTd);
+  // tr.appendChild(nameTd);
+  // results.appendChild(tr);
+
+  // tr.addEventListener("click", () => {
+  //   map.setCenter(place.geometry.location);
+  // });
 
   // Listens for click on marker
   marker.addListener("click", function () {
@@ -164,13 +220,23 @@ function createMarker(place, map, labelIndex) {
 
 let markers = [];
 
+// function clearResults() {
+//   const results = document.getElementById("results");
+
+//   while (results.childNodes[0]) {
+//     results.removeChild(results.childNodes[0]);
+//   }
+// }
+
+
 function clearResults() {
-  const results = document.getElementById("results");
+  const results = document.getElementById("cardList");
 
   while (results.childNodes[0]) {
     results.removeChild(results.childNodes[0]);
   }
 }
+
 
 function initialize() {
   initMap();

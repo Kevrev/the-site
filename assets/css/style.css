@@ -1,8 +1,17 @@
+/* Outlines all elements/css in red boxes to see sizing */
+/* * {
+  outline: 1px solid #f00 !important;
+} */
+
 header {
   position: relative;
-  width: 100 vw;
+  width: 100%;
   height: 40vh;
   background-color: rgb(97, 135, 90);
+}
+
+a {
+  color: #63865c;
 }
 
 .websiteTitle {
@@ -20,7 +29,7 @@ header {
 /* Format banner better and so image isn't blurry */
 header > img {
   background-repeat: no-repeat;
-  width: 100vw;
+  width: 100%;
   height: 40vh;
   object-fit: cover;
   margin-bottom: 5px;
@@ -31,7 +40,11 @@ header > img {
   margin-left: auto;
   margin-top: 3vh;
   width: 30vw;
-  justify-content: center;
+}
+
+.searchBarContainer {
+  width: 100%;
+  margin: 0px;
 }
 
 /* Text color of the text in the searchBar */
@@ -44,15 +57,28 @@ header > img {
   border-color: #aaabc3;
 }
 
+ul {
+  list-style-type: none;
+}
+
 #map {
-  height: 60vh;
-  /* width: 40vw; */
+  height: 70vh;
+  width: 35vw;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  float: left;
 }
+
 body {
   background-color: rgb(163, 189, 163);
+}
+
+#results {
+  /* display: block; */
+  width: 500px;
+  max-height: 56.5vh;
+  overflow-y: auto;
 }
 
 #results {
@@ -67,6 +93,75 @@ body {
   overflow-y: auto;
 }
 
+.card {
+  /* width: 600px; */
+  width: 500px;
+  height: 120px;
+  background: #ffffff;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  /* position: absolute; */
+}
+
+.imgContainer {
+  height: 120px;
+  overflow: hidden;
+} 
+
+.locationImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.locationName {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #0c0b08bf;
+}
+
 .container {
   max-height: 60vh;
+}
+
+.locationAddress {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  color: #9091ac;
+  margin-bottom: 1px;
+}
+
+.locationContact {
+  font-family: "Fira Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 5px;
+  color: #9091ac;
+  padding-bottom: 1px;
+}
+
+.locationRating {
+  font-family: "Fira Sans";
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 5px;
+  color: #9091ac;
+  padding-bottom: 2px;
+  
+}
+
+.placeContainer {
+  width: 550px;
+  height: 60vh;
+}
+
+.card-body {
+  padding: 14px 24px 24px 20px;
 }
