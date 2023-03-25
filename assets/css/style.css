@@ -44,13 +44,19 @@ header > img {
   border-color: #aaabc3;
 }
 
+ul {
+  list-style-type: none;
+}
+
 #map {
   height: 60vh;
   width: 40vw;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  float: left;
 }
+
 body {
   background-color: rgb(163, 189, 163);
 }
@@ -85,3 +91,10 @@ body {
   color: #268eda;
   padding-bottom: 15px;
 }
+
+.placeContainer {
+  width: 650px;
+  height: 60vh;
+}
+
+#lastSearch {}

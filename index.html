@@ -48,7 +48,7 @@
      <div class="row justify-content-center">
         <!-- sets width (searchBar) -->
         <div class="searchBar input-group rounded">
-            <p></p>
+            <p>Last Search: &nbsp;</p>
             <p id="lastSearch"></p>
         </div>
     </div>
@@ -66,12 +66,12 @@
     <!-- Map widget should be present by default -->
     <div class="container mh-30">
         <div class="row">
-            <div id="history" class="col-md-2 gx-3 mb-4">Search History</div>
+            <!-- <div id="history" class="col-md-2 gx-3 mb-4">Search History</div> -->
             <div id="map" class="col-md-5 gx-3 mb-4"></div>
             
             <!-- Shows the number of results, should be added after searching -->
             <div id="listing" class="col-md-4 gx-3 mb-4">
-                <table id="resultsTable">Result
+                <table id="resultsTable">
                 <tbody id="results"></tbody>
                 </table>
             </div>
@@ -85,7 +85,7 @@
         <li id="resultLocation-3"></li>
     </ul> -->
 
-    <ul class="placeContainer">
+    <ul class="placeContainer overflow-auto">
     </ul> 
 
     <!-- Displays the forecast for the selected location -->

@@ -11,7 +11,7 @@ function loadLocalStorage() {
   }
 }
 
-history.appendChild(lastSearch);
+// history.appendChild(lastSearch);
 
 loadLocalStorage();
 
