@@ -1,103 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Fira+Sans&display=swap" rel="stylesheet"
+    <link
+      href="https://fonts.googleapis.com/css2?family=Carter+One&family=Fira+Sans&display=swap"
+      rel="stylesheet"
     />
     <!-- Font Awesome -->
     <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
     />
     <!-- Google Fonts -->
     <link
-    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-    rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
     />
     <!-- MDB -->
     <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
-    rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+      rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Gloria+Hallelujah&family=Zeyada&display=swap" rel="stylesheet">    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Gloria+Hallelujah&family=Zeyada&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/CampingSite.css" />
     <title>Have A Nice Day</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Banner image (set as background-image ) -->
     <header>
-        <img src="./assets/images/CampingInYosemite.jpg" />
-        <h1 class="websiteTitle">Have a Nice Day</h1>
+      <img src="./assets/images/CampingInYosemite.jpg" />
+      <h1 class="websiteTitle">Have a Nice Day</h1>
     </header>
-    
 
     <!-- Centers search button -->
     <div class="row justify-content-center">
-        <!-- sets width (searchBar) -->
-        <div class="searchBar input-group rounded">
-            <!-- Actual input part, rounds search button too -->
-            <input id="locationSearch" type="text" class="form-control rounded" placeholder="Search by location..." aria-label="Search" aria-describedby="search-addon"/>
-            <span class="input-group-text border-0" id="search-addon">
-            <i class="fas fa-search"></i>
-            </span>
-        </div>
+      <!-- sets width (searchBar) -->
+      <div class="searchBar input-group rounded">
+        <!-- Actual input part, rounds search button too -->
+        <input
+          id="locationSearch"
+          type="text"
+          class="form-control rounded"
+          placeholder="Search by location..."
+          aria-label="Search"
+          aria-describedby="search-addon"
+        />
+        <span class="input-group-text border-0" id="search-addon">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
     </div>
 
-     <div class="row justify-content-center">
-        <!-- sets width (searchBar) -->
-        <div class="searchBar input-group rounded">
-            <p></p>
-            <p id="lastSearch"></p>
-        </div>
+    <div class="row justify-content-center" style="height: 1vh">
+      <!-- sets width (searchBar) -->
+      <div class="searchBar input-group rounded"></div>
     </div>
-
-
-
 
     <!-- Horizontal line divider -->
     <hr class="hr" />
-
 
     <!-- List of elements related to the APIs. Nothing aside from the map will display by default so the rest are stylings for theoretical elements that will be created by user input -->
     <!-- We can have a default search value if its easier too, e.g. the page always defaults to Lake Tahoe or something before the user searches -->
 
     <!-- Map widget should be present by default -->
     <div class="container mh-30">
-        <div class="row">
-            <div id="history" class="col-md-2 gx-3 mb-4">Search History</div>
-            <div id="map" class="col-md-5 gx-3 mb-4"></div>
-            
-            <!-- Shows the number of results, should be added after searching -->
-            <div id="listing" class="col-md-4 gx-3 mb-4">
-                <table id="resultsTable">Result
-                <tbody id="results"></tbody>
-                </table>
-            </div>
+      <div class="row">
+        <div id="historyList" class="col-md-3 col-sm-10 gx-3 mb-4">
+          Search History
+          <div id="history"></div>
         </div>
-    </div>
-    <!-- These three will show the location and should appear after searching, if we have more, maybe just have a scroll bar and append more elements with ids 4, 5, 6, etc. -->
-    <!-- These ones definitely need the most editing since they will be generated dynamically and have to include data from locations -->
-    <!-- <ul>
-        <li id="resultLocation-1"></li>
-        <li id="resultLocation-2"></li>
-        <li id="resultLocation-3"></li>
-    </ul> -->
+        <div id="map" class="col-md-5 col-sm-10 gx-3 mb-4"></div>
 
-    <ul class="placeContainer">
-    </ul> 
+        <!-- Shows the number of results, should be added after searching -->
+        <div id="listing" class="col-md-3 col-sm-10 gx-3 mb-4">
+          <table id="resultsTable">
+            Result
+            <tbody id="results"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
     <!-- Displays the forecast for the selected location -->
-    <div id="weatherWidget"></div>
+    <!-- <div id="weatherWidget"></div>
 
     <hr class="hr" />
 
-    <footer class="apiLinks"><!--icon and link of apis--></footer> 
+    <footer class="apiLinks">//icon and link of apis</footer> -->
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/CampingSite.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYyYltLAg7ukRHj_iMyMqjY_HNW4xYL4A&libraries=places&callback=initialize"></script>
-</script>
-</body>
+  </body>
 </html>
