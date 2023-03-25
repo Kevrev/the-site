@@ -124,17 +124,25 @@ function createMarker(place, map) {
       var $locationName = $("<h5>").addClass("card-title locationName").text(place.name);
       var $locationAddress = $("<p>").addClass("card-text locationAddress").text(place.vicinity);
       var $locationContact = $("<p>").addClass("card-text locationContact").text(phoneNumber);
-      var $websiteLink = $("<a>").attr("href", "").text(websiteUrl);
-     
+      var $websiteLink = $("<a>").attr({"href": websiteUrl, "target": "_blank"}).text(" Website Homepage ");
+      var $externalLinkIcon = $("<i>").addClass("fa fa-external-link").attr("aria-hidden", "true");
+      $websiteLink.append($externalLinkIcon);
+
       $locationContact.append($websiteLink);
         $cardBodyDiv.append($locationName).append($locationAddress).append($locationContact);
           $rowDiv.append($imgDiv).append($cardBodyDiv);
             $outerDiv.append($rowDiv);
               $imgDiv.append($img);
+
+
+    $outerDiv.on('click', function() {
+      map.setCenter(place.geometry.location);
+    });
+
       $(".placeContainer").append($outerDiv);
     }
   });
-
+  
 
   const placesList = document.getElementById("places");
   const tr = document.createElement("tr");
@@ -153,6 +161,10 @@ function createMarker(place, map) {
   results.appendChild(tr);
 
   tr.addEventListener("click", () => {
+    map.setCenter(place.geometry.location);
+  });
+
+  $('.card').on('click', function() {
     map.setCenter(place.geometry.location);
   });
 
