@@ -119,7 +119,7 @@ function createMarker(place, map) {
       var $outerDiv = $("<div>").attr("id", "resultLocation-2").addClass("card mb-2");
       var $rowDiv = $("<div>").addClass("row g-0");
       var $imgDiv = $("<div>").addClass("col-md-4 imgContainer");
-      var $img = $("<img>").attr("src", photoUrl);
+      var $img = $("<img>").attr("src", photoUrl).addClass("rounded-start locationImage");
       var $cardBodyDiv = $("<div>").addClass("col-md-8").addClass("card-body");
       var $locationName = $("<h5>").addClass("card-title locationName").text(place.name);
       var $locationAddress = $("<p>").addClass("card-text locationAddress").text(place.vicinity);
