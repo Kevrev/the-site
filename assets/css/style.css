@@ -55,28 +55,28 @@ body {
   background-color: rgb(163, 189, 163);
 }
 
-/* .card {
-  width: 1000px;
+.card {
+  width: 600px;
   height: 120px;
   background: #ffffff;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  position: absolute;
-} */
+  /* position: absolute; */
+}
 
-/* .imgContainer {
+.imgContainer {
   height: 120px;
   overflow: hidden;
-} */
+} 
 
-/* .locationImage {
+.locationImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-} */
+}
 
-/* .locationName {
+.locationName {
   font-family: "Fira Sans";
   font-style: normal;
   font-weight: 400;
@@ -84,4 +84,4 @@ body {
   line-height: 5px;
   color: #268eda;
   padding-bottom: 15px;
-} */
+}
