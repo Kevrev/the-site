@@ -3,6 +3,12 @@
   outline: 1px solid #f00 !important;
 } */
 
+body {
+  background-image: url("../images/background2.png");
+  background-size: cover; 
+  background-position: center; 
+}
+
 header {
   position: relative;
   width: 100%;
@@ -93,7 +99,7 @@ body {
   overflow-y: auto;
 }
 
-.card {
+.placeCard {
   /* width: 600px; */
   width: 500px;
   height: 120px;
@@ -101,6 +107,11 @@ body {
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   /* position: absolute; */
+}
+
+.card {
+  width: 550px;
+  height: 70vh;
 }
 
 .imgContainer {
@@ -158,10 +169,55 @@ body {
 }
 
 .placeContainer {
-  width: 550px;
-  height: 60vh;
+  width: 525px;
+  height: 63vh;
 }
 
-.card-body {
+.placeCard-body {
   padding: 14px 24px 24px 20px;
+}
+
+.col-md-5 {
+  flex: 0 0 auto;
+  width: 36.6%;
+}
+
+@media (max-width: 1366px) {
+
+  .card {
+    width: 450px;
+    height: 70vh;
+  }
+
+  .placeCard {
+    width: 400px;
+    height: 100px;
+    border-radius: 5px;
+  }
+
+  .placeContainer {
+    width: 425px;
+    height: 58vh;
+  }
+
+  .locationName {
+    font-size: 14px;
+  }
+
+  .locationAddress {
+    font-size: 12px;
+    margin-bottom: 1px;
+  }
+  
+  .locationContact {
+    font-size: 12px;
+    line-height: 0px;
+    padding-bottom: 0px;
+  }
+  
+  .locationRating {
+    font-size: 12px;
+    line-height: 0px;
+    padding-bottom: 0px;
+  }
 }
