@@ -64,27 +64,31 @@
     <!-- We can have a default search value if its easier too, e.g. the page always defaults to Lake Tahoe or something before the user searches -->
 
     <!-- Map widget should be present by default -->
-  
+
+
     <div class="content">
-      <div class="container-fluid d-flex">
-        <div class="row">
-          <div class="col-md-3">
-            <div id="historyList" class="">
-              Search History
-              <div id="history"></div>
-              <button id="clearHistory" type="button" class="btn btn-warning">Clear History</button>
+      <div class="container-fluid d-flex flex-wrap">
+        <div class="col-md-2 mb-3">
+          <div id="historyList" class="">
+            Search History
+            <div id="history"></div>
+            <button id="clearHistory" type="button" class="btn btn-warning">Clear History</button>
+          </div>
+        </div>
+        <div class="col-md-5 mb-3">
+          <div id="map" class="mx-auto"></div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <div id="cardList" class="placeContainer overflow-auto"></div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div id="map" class="me-"></div>
-          </div>
-          <div class="col-md-3">
-            <div id="cardList" class="placeContainer overflow-auto"></div> 
-          </div>
+        
         </div>
       </div>
     </div>
-
 
     
         <!-- Shows the number of results, should be added after searching -->
