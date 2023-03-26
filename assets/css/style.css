@@ -62,8 +62,8 @@ ul {
 }
 
 #map {
-  height: 70vh;
-  width: 35vw;
+  height: 60vh;
+  width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -74,19 +74,6 @@ body {
   background-color: rgb(163, 189, 163);
 }
 
-#results {
-  /* display: block; */
-  width: 500px;
-  max-height: 56.5vh;
-  overflow-y: auto;
-}
-
-#results {
-  display: block;
-  max-height: 56.5vh;
-  overflow-y: auto;
-}
-
 #history {
   display: block;
   max-height: 56.5vh;
@@ -95,18 +82,19 @@ body {
 
 .card {
   /* width: 600px; */
-  width: 500px;
-  height: 120px;
+  width: 100%;
+  height: 25%;
   background: #ffffff;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2); */
   border-radius: 10px;
   /* position: absolute; */
 }
 
 .imgContainer {
-  height: 120px;
+  height: 100%;
+  width: 30%;
   overflow: hidden;
-} 
+}
 
 .locationImage {
   width: 100%;
@@ -119,11 +107,12 @@ body {
   font-family: "Fira Sans";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 17px;
+  margin: 0%;
   color: #0c0b08bf;
 }
 
-.container {
+.content {
   max-height: 60vh;
 }
 
@@ -154,14 +143,19 @@ body {
   line-height: 5px;
   color: #9091ac;
   padding-bottom: 2px;
-  
 }
 
 .placeContainer {
-  width: 550px;
+  width: 100%;
   height: 60vh;
 }
 
+.row {
+  width: 100%;
+  height: 100%;
+  /* display: inline; */
+}
 .card-body {
-  padding: 14px 24px 24px 20px;
+  /* padding: 14px 24px 24px 20px; */
+  width: 70%;
 }
