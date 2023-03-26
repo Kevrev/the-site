@@ -4,7 +4,7 @@ const MARKER_PATH =
 let storedHistory = JSON.parse(localStorage.getItem("historyValue")) || [];
 let historyEl = $("#history");
 
-$('#clearHistory').on('click', function() {
+$("#clearHistory").on("click", function () {
   localStorage.clear();
   historyEl.empty();
 });
@@ -94,105 +94,112 @@ let labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 // const markerIcon = MARKER_PATH + labels[labelIndex++ % labels.length] + ".png";
 
 function createMarker(place, map, labelIndex) {
-const markerIcon =
+  const markerIcon =
     MARKER_PATH + labels[labelIndex++ % labels.length] + ".png";
   let marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location,
     icon: markerIcon,
+    animation: google.maps.Animation.DROP,
   });
-  
+
   let service = new google.maps.places.PlacesService(map);
   let request = {
-      placeId: place.place_id,
-      fields: ['website', 'formatted_phone_number', 'rating']
-    };
-    
-  service.getDetails(request, function(placeDetails, status) {
+    placeId: place.place_id,
+    fields: ["website", "formatted_phone_number", "rating"],
+  };
+
+  service.getDetails(request, function (placeDetails, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
-      const photoUrl = place.photos && place.photos.length > 0 ? place.photos[0].getUrl({
-        maxWidth: 150,
-        maxHeight: 150
-      }) : "./assets/images/noimage2.png";
-   
-  // $("#resultDesc").text(markers.length + " Results:");
-      
-  const websiteUrl = placeDetails.website ? placeDetails.website : '';
-  const phoneNumber = placeDetails.formatted_phone_number ? placeDetails.formatted_phone_number : '';
-  const userRating = placeDetails.rating ? placeDetails.rating : "No User Rating Available";
-  const $outerDiv = $("<div>")
-    .attr("id", "resultLocation-2")
-    .addClass("placeCard mb-2");
+      const photoUrl =
+        place.photos && place.photos.length > 0
+          ? place.photos[0].getUrl({
+              maxWidth: 150,
+              maxHeight: 150,
+            })
+          : "./assets/images/NO IMAGE AVAILABLE.png";
 
-  const $rowDiv = $("<div>")
-    .addClass("row g-0");
-  
-  const $imgDiv = $("<div>")
-    .addClass("col-md-4 imgContainer");
-  
-  const $img = $("<img>")
-    .attr("src", photoUrl)
-    .addClass("rounded-start locationImage");
-  
-  const $cardBodyDiv = $("<div>")
-    .addClass("col-md-8")
-    .addClass("placeCard-body");
+      // $("#resultDesc").text(markers.length + " Results:");
 
-  const $locationName = $("<h5>")
-    .addClass("card-title locationName")
-    .text(place.name);
-  
-  const $locationAddress = $("<p>")
-    .addClass("card-text locationAddress")
-    .text(place.vicinity);
-  
-  const $locationContact = $("<p>")
-    .addClass("card-text locationContact")
-    .text(phoneNumber);
-  
-  const $websiteLink = $("<a>")
-    .attr({"href": websiteUrl, "target": "_blank"})
-    .text(" Website Homepage ");
-  
-  const $externalLinkIcon = $("<i>")
-    .addClass("fa fa-external-link")
-    .attr("aria-hidden", "true");
-  
-  const $locationRating = $("<p>")
-    .addClass("card-text locationRating")
-    .text(' User Rating: ' + userRating + ' / 5'); 
-  
-  $websiteLink.append($externalLinkIcon);
-  
-  $locationContact.append($websiteLink);
-  
-  $cardBodyDiv
-      .append($locationName)
-      .append($locationAddress)
-      .append($locationContact)
-      .append($locationRating);
-  
-  $rowDiv
-      .append($imgDiv)
-      .append($cardBodyDiv);
-  
-  $outerDiv.append($rowDiv);
-  
-  $imgDiv.append($img);
+      const websiteUrl = placeDetails.website ? placeDetails.website : "";
+      const phoneNumber = placeDetails.formatted_phone_number
+        ? placeDetails.formatted_phone_number
+        : "NA";
+      const userRating = placeDetails.rating ? placeDetails.rating : "--";
+      const $outerDiv = $("<div>")
+        .attr("id", "resultLocation-2")
+        .addClass("placeCard mb-2");
 
+      const $rowDiv = $("<div>").addClass("row g-0");
 
-            $outerDiv.on('click', function() {
-              map.setCenter(place.geometry.location);
-              const infowindow = new google.maps.InfoWindow({
-                content: 'You are here',
-                position: place.geometry.location,
-                pixelOffset: new google.maps.Size(0, -32)
-              });
-              infowindow.open(map);
-              setTimeout(function() {
-                infowindow.close();
-              }, 2000); 
-            });
+      const $imgDiv = $("<div>").addClass("col-md-4 col-sm-4 imgContainer");
+
+      const $img = $("<img>")
+        .attr("src", photoUrl)
+        .addClass("rounded-start locationImage");
+
+      const $cardBodyDiv = $("<div>")
+        .addClass("col-md-8 col-sm-8")
+        .addClass("placeCard-body");
+
+      const $locationName = $("<h5>")
+        .addClass("card-title locationName")
+        .text(place.name);
+
+      const $locationAddress = $("<p>")
+        .addClass("card-text locationAddress")
+        .text(place.vicinity);
+
+      const $phoneIcon = $("<i>")
+        .addClass("fa-solid fa-phone")
+        .attr("aria-hidden", "true");
+
+      const $locationContact = $("<p>")
+        .addClass("card-text locationContact")
+        .text(" " + phoneNumber);
+
+      const $websiteLink = $("<a>")
+        .attr({ href: websiteUrl, target: "_blank" })
+        .text(" Website ");
+
+      const $externalLinkIcon = $("<i>")
+        .addClass("fa fa-external-link")
+        .attr("aria-hidden", "true");
+
+      const $locationRating = $("<p>")
+        .addClass("card-text locationRating")
+        .text(" User Rating: " + userRating + " / 5");
+
+      $locationContact.prepend($phoneIcon);
+
+      $websiteLink.append($externalLinkIcon);
+
+      $locationContact.append($websiteLink);
+
+      $cardBodyDiv
+        .append($locationName)
+        .append($locationAddress)
+        .append($locationContact)
+        .append($locationRating);
+
+      $rowDiv.append($imgDiv).append($cardBodyDiv);
+
+      $outerDiv.append($rowDiv);
+
+      $imgDiv.append($img);
+
+      $outerDiv.on("click", function () {
+        map.setCenter(place.geometry.location);
+        const infowindow = new google.maps.InfoWindow({
+          content: "You are here",
+          position: place.geometry.location,
+          pixelOffset: new google.maps.Size(0, -32),
+        });
+        infowindow.open(map);
+        setTimeout(function () {
+          infowindow.close();
+        }, 2000);
+      });
 
       $(".placeContainer").append($outerDiv);
     }
@@ -272,14 +279,12 @@ let markers = [];
 //   }
 // }
 
-
 function clearResults() {
   const results = document.getElementById("cardList");
   while (results.childNodes[0]) {
     results.removeChild(results.childNodes[0]);
   }
 }
-
 
 function initialize() {
   initMap();

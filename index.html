@@ -65,33 +65,36 @@
 
     <!-- Map widget should be present by default -->
 
-
     <div class="content">
-      <div class="container-fluid d-flex flex-wrap">
-        <div class="col-md-2 mb-3">
-          <div id="historyList" class="">
-            Search History
-            <div id="history"></div>
-            <button id="clearHistory" type="button" class="btn btn-warning">Clear History</button>
+      <div class="container">
+        <div class="row r-0">
+          <div class="col-md-3 col-sm-10 mb-3">
+            <!--added responsive width for small screen, so does other two-->
+            <div id="historyList">
+              Search History
+              <div id="history"></div>
+              <button id="clearHistory" type="button" class="btn btn-warning">
+                Clear History
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="col-md-5 mb-3">
-          <div id="map" class="mx-auto"></div>
-        </div>
-        <div id="resultContainer" class="col-md-3 mb-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 id="resultDesc" class="card-title"></h5>
-              <div id="cardList" class="placeContainer overflow-auto"></div>
+          <div class="col-md-5 col-sm-10 mb-3">
+            <div id="map" class="mx-auto"></div>
+          </div>
+          <div id="resultContainer" class="col-md-4 col-sm-10 mb-3">
+            <div class="card">
+              <div class="card-body" style="padding: 3%; height: 70vh">
+                <h5 id="resultDesc" class="card-title"></h5>
+                <div id="cardList" class="placeContainer overflow-auto"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    
-        <!-- Shows the number of results, should be added after searching -->
-        <!-- <div id="listing" class="col-md-3 col-sm-10 gx-3 mb-4">
+    <!-- Shows the number of results, should be added after searching -->
+    <!-- <div id="listing" class="col-md-3 col-sm-10 gx-3 mb-4">
           <table id="resultsTable">
             Result
             <tbody id="results"></tbody>

@@ -2,11 +2,14 @@
 /* * {
   outline: 1px solid #f00 !important;
 } */
+:root {
+  --REIGreen: #1f513f;
+}
 
 body {
   background-image: url("../images/background2.png");
-  background-size: cover; 
-  background-position: center; 
+  background-size: cover;
+  background-position: center;
 }
 
 header {
@@ -15,10 +18,10 @@ header {
   height: 40vh;
   background-color: rgb(97, 135, 90);
 }
-
+/* 
 a {
   color: #63865c;
-}
+} */
 
 .websiteTitle {
   position: absolute;
@@ -69,7 +72,7 @@ ul {
 
 #map {
   height: 70vh;
-  width: 35vw;
+  width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -99,25 +102,32 @@ body {
   overflow-y: auto;
 }
 
-.placeCard {
-  /* width: 600px; */
-  width: 500px;
-  height: 120px;
-  background: #ffffff;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  /* position: absolute; */
+#clearHistory {
+  background-color: var(--REIGreen);
+  box-shadow: 0 4px 9px -4px var(--REIGreen);
+  margin-top: 3%;
 }
 
-.card {
-  width: 550px;
-  height: 70vh;
+.content {
+  max-height: 70vh;
+}
+
+.container {
+  max-width: 95%;
+}
+
+.row {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 5px;
 }
 
 .imgContainer {
-  height: 120px;
+  height: 100%;
+  width: 30%;
   overflow: hidden;
-} 
+}
 
 .locationImage {
   width: 100%;
@@ -130,31 +140,30 @@ body {
   font-family: "Fira Sans";
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 90%;
   color: #0c0b08bf;
-}
-
-.container {
-  max-height: 60vh;
+  line-height: 96%;
+  margin-bottom: 3%;
 }
 
 .locationAddress {
   font-family: "Fira Sans";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
   color: #9091ac;
-  margin-bottom: 1px;
+  font-size: 80%;
+  line-height: 100%;
+  margin-bottom: 1%;
 }
 
 .locationContact {
   font-family: "Fira Sans";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 5px;
   color: #9091ac;
-  padding-bottom: 1px;
+  font-size: 80%;
+  line-height: 96%;
+  margin-bottom: 1%;
 }
 
 .locationRating {
@@ -165,59 +174,33 @@ body {
   line-height: 5px;
   color: #9091ac;
   padding-bottom: 2px;
-  
-}
-
-.placeContainer {
-  width: 525px;
-  height: 63vh;
+  font-size: 75%;
+  line-height: 75%;
+  color: #9091ac;
+  margin-top: 3%;
 }
 
 .placeCard-body {
-  padding: 14px 24px 24px 20px;
+  padding: 3%;
+  height: 100%;
+  width: 70%;
 }
 
-.col-md-5 {
-  flex: 0 0 auto;
-  width: 36.6%;
+/* @media (max-width: 1366px) { */
+.card {
+  width: 100%;
+  height: 70vh;
 }
 
-@media (max-width: 1366px) {
+.placeCard {
+  width: 100%;
+  height: 27%;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
 
-  .card {
-    width: 450px;
-    height: 70vh;
-  }
-
-  .placeCard {
-    width: 400px;
-    height: 100px;
-    border-radius: 5px;
-  }
-
-  .placeContainer {
-    width: 425px;
-    height: 58vh;
-  }
-
-  .locationName {
-    font-size: 14px;
-  }
-
-  .locationAddress {
-    font-size: 12px;
-    margin-bottom: 1px;
-  }
-  
-  .locationContact {
-    font-size: 12px;
-    line-height: 0px;
-    padding-bottom: 0px;
-  }
-  
-  .locationRating {
-    font-size: 12px;
-    line-height: 0px;
-    padding-bottom: 0px;
-  }
+.placeContainer {
+  width: 100%;
+  height: 97%;
 }
