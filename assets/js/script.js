@@ -9,6 +9,7 @@ $("#clearHistory").on("click", function () {
   historyEl.empty();
 });
 
+// Backup to ensure it displays at most 15
 for (var i = 0; i < 15; i++) {
   $("<div>").text(storedHistory[i]).appendTo(historyEl);
 }
@@ -39,8 +40,10 @@ function initMap() {
     let historyValue = places[0].formatted_address;
     storedHistory.unshift(historyValue);
 
+    // Sets user input into local storage history after search
     localStorage.setItem(
       "historyValue",
+      // Limits to 15 values in search history
       JSON.stringify(storedHistory.slice(0, 15))
     );
 
@@ -57,7 +60,6 @@ function initMap() {
         // Searches in a 50km radius
         radius: 50000,
         keyword: "campground",
-        // type: ["campground"]
       },
 
       (results, status) => {
@@ -286,6 +288,6 @@ function clearResults() {
   }
 }
 
-function initialize() {
-  initMap();
-}
+// function initialize() {
+//   initMap();
+// }
