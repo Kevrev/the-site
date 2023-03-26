@@ -114,27 +114,71 @@ const markerIcon =
         maxWidth: 150,
         maxHeight: 150
       }) : "./assets/images/noimage2.png";
-      const websiteUrl = placeDetails.website ? placeDetails.website : '';
-      const phoneNumber = placeDetails.formatted_phone_number ? placeDetails.formatted_phone_number : '';
-      const userRating = placeDetails.rating ? placeDetails.rating : "No User Rating Available";
-      var $outerDiv = $("<div>").attr("id", "resultLocation-2").addClass("placeCard mb-2");
-      var $rowDiv = $("<div>").addClass("row g-0");
-      var $imgDiv = $("<div>").addClass("col-md-4 imgContainer");
-      var $img = $("<img>").attr("src", photoUrl).addClass("rounded-start locationImage");
-      var $cardBodyDiv = $("<div>").addClass("col-md-8").addClass("placeCard-body");
-      var $locationName = $("<h5>").addClass("card-title locationName").text(place.name);
-      var $locationAddress = $("<p>").addClass("card-text locationAddress").text(place.vicinity);
-      var $locationContact = $("<p>").addClass("card-text locationContact").text(phoneNumber);
-      var $websiteLink = $("<a>").attr({"href": websiteUrl, "target": "_blank"}).text(" Website Homepage ");
-      var $externalLinkIcon = $("<i>").addClass("fa fa-external-link").attr("aria-hidden", "true");
-      var $locationRating = $("<p>").addClass("card-text locationRating").text(' User Rating: ' + userRating + ' / 5');
-      $websiteLink.append($externalLinkIcon);
+   
+  // $("#resultDesc").text(markers.length + " Results:");
+      
+  const websiteUrl = placeDetails.website ? placeDetails.website : '';
+  const phoneNumber = placeDetails.formatted_phone_number ? placeDetails.formatted_phone_number : '';
+  const userRating = placeDetails.rating ? placeDetails.rating : "No User Rating Available";
+  const $outerDiv = $("<div>")
+    .attr("id", "resultLocation-2")
+    .addClass("placeCard mb-2");
 
-      $locationContact.append($websiteLink);
-        $cardBodyDiv.append($locationName).append($locationAddress).append($locationContact).append($locationRating);
-          $rowDiv.append($imgDiv).append($cardBodyDiv);
-            $outerDiv.append($rowDiv);
-              $imgDiv.append($img);
+  const $rowDiv = $("<div>")
+    .addClass("row g-0");
+  
+  const $imgDiv = $("<div>")
+    .addClass("col-md-4 imgContainer");
+  
+  const $img = $("<img>")
+    .attr("src", photoUrl)
+    .addClass("rounded-start locationImage");
+  
+  const $cardBodyDiv = $("<div>")
+    .addClass("col-md-8")
+    .addClass("placeCard-body");
+
+  const $locationName = $("<h5>")
+    .addClass("card-title locationName")
+    .text(place.name);
+  
+  const $locationAddress = $("<p>")
+    .addClass("card-text locationAddress")
+    .text(place.vicinity);
+  
+  const $locationContact = $("<p>")
+    .addClass("card-text locationContact")
+    .text(phoneNumber);
+  
+  const $websiteLink = $("<a>")
+    .attr({"href": websiteUrl, "target": "_blank"})
+    .text(" Website Homepage ");
+  
+  const $externalLinkIcon = $("<i>")
+    .addClass("fa fa-external-link")
+    .attr("aria-hidden", "true");
+  
+  const $locationRating = $("<p>")
+    .addClass("card-text locationRating")
+    .text(' User Rating: ' + userRating + ' / 5'); 
+  
+  $websiteLink.append($externalLinkIcon);
+  
+  $locationContact.append($websiteLink);
+  
+  $cardBodyDiv
+      .append($locationName)
+      .append($locationAddress)
+      .append($locationContact)
+      .append($locationRating);
+  
+  $rowDiv
+      .append($imgDiv)
+      .append($cardBodyDiv);
+  
+  $outerDiv.append($rowDiv);
+  
+  $imgDiv.append($img);
 
 
             $outerDiv.on('click', function() {
@@ -231,7 +275,6 @@ let markers = [];
 
 function clearResults() {
   const results = document.getElementById("cardList");
-
   while (results.childNodes[0]) {
     results.removeChild(results.childNodes[0]);
   }

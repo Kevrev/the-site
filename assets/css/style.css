@@ -3,6 +3,12 @@
   outline: 1px solid #f00 !important;
 } */
 
+body {
+  background-image: url("../images/background2.png");
+  background-size: cover; 
+  background-position: center; 
+}
+
 header {
   position: relative;
   width: 100%;
@@ -213,6 +219,5 @@ body {
     font-size: 12px;
     line-height: 0px;
     padding-bottom: 0px;
-    
   }
 }
