@@ -37,6 +37,10 @@ function initMap() {
       return;
     }
 
+        // Hides the placeholder image and text
+    $('.placeholderDesign').addClass('d-none');
+    $('.placeholderText').addClass('d-none');
+
     let historyValue = places[0].formatted_address;
     storedHistory.unshift(historyValue);
 
