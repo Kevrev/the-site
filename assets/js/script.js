@@ -126,11 +126,10 @@ function createMarker(place, map, labelIndex) {
       const websiteUrl = placeDetails.website ? placeDetails.website : "";
       const phoneNumber = placeDetails.formatted_phone_number
         ? placeDetails.formatted_phone_number
-        : "NA";
+        : "N/A";
       const userRating = placeDetails.rating ? placeDetails.rating : "--";
       const $outerDiv = $("<div>")
-        .attr("id", "resultLocation-2")
-        .addClass("placeCard mb-2");
+        .addClass("fadeIn placeCard mb-2");
 
       const $rowDiv = $("<div>").addClass("row g-0");
 
