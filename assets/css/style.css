@@ -25,7 +25,7 @@ header {
   height: 40%;
   bottom: 3vh;
   left: 3vw;
-  font-family: "Delicious Handrawn", cursive;
+  font-family: "Delicious Handrawn", cursive, sans-serif;
   font-style: normal;
   font-weight: 400;
   color: #ffffff;
@@ -42,7 +42,7 @@ header {
   left: 200px;
   bottom: 5%;
   font-size: 57px;
-  font-family: "Domine", serif;
+  font-family: "Domine", sans-serif;
 }
 
 .youCamp {
@@ -157,7 +157,7 @@ body {
 }
 
 .locationName {
-  font-family: "Fira Sans";
+  font-family: "Fira Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 0.9rem;
@@ -167,7 +167,7 @@ body {
 }
 
 .locationAddress {
-  font-family: "Fira Sans";
+  font-family: "Fira Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   color: #9091ac;
@@ -177,7 +177,7 @@ body {
 }
 
 .locationContact {
-  font-family: "Fira Sans";
+  font-family: "Fira Sans", sans-serif;
   font-style: normal;
   font-weight: 400;
   color: #9091ac;
@@ -187,7 +187,7 @@ body {
 }
 
 .locationRating {
-  font-family: "Fira Sans";
+  font-family: "Fira Sans", sans-serif;
   font-style: italic;
   font-weight: 400;
   color: #9091ac;
