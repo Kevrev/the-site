@@ -32,7 +32,6 @@
     <title>THE SITE : you camp</title>
   </head>
   <body>
-    <!-- Banner image (set as background-image ) -->
     <header>
       <img src="./assets/images/CampingInYosemite.jpg" />
       <div class="websiteTitle">
@@ -44,11 +43,8 @@
       </div>
     </header>
 
-    <!-- Centers search button -->
     <div class="row justify-content-center searchBarContainer">
-      <!-- sets width (searchBar) -->
       <div class="searchBar input-group rounded">
-        <!-- Actual input part, rounds search button too -->
         <input
           id="locationSearch"
           type="text"
@@ -63,19 +59,12 @@
       </div>
     </div>
 
-    <!-- Horizontal line divider -->
     <hr class="hr" />
-
-    <!-- List of elements related to the APIs. Nothing aside from the map will display by default so the rest are stylings for theoretical elements that will be created by user input -->
-    <!-- We can have a default search value if its easier too, e.g. the page always defaults to Lake Tahoe or something before the user searches -->
-
-    <!-- Map widget should be present by default -->
 
     <div class="content">
       <div class="container">
         <div class="row r-0">
           <div class="col-md-3 col-sm-10 mb-3 historyList">
-            <!--added responsive width for small screen, so does other two-->
             <div id="historyList">
               <div class="historyTitle">Search History</div>
               <div id="history"></div>
@@ -101,6 +90,7 @@
 
     <!-- Shows the number of results, should be added after searching -->
     <!-- <div id="listing" class="col-md-3 col-sm-10 gx-3 mb-4">
+
           <table id="resultsTable">
             Result
             <tbody id="results"></tbody>
@@ -108,10 +98,7 @@
         </div>
       </div>
     </div> -->
-
-    <!-- Displays the forecast for the selected location -->
-    <!-- <div id="weatherWidget"></div> -->
-
+    
     <hr class="hr" />
 
     <footer class="text-center text-lg-start bg-light text-muted">
@@ -176,13 +163,6 @@
                </a>
               </p>
             </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-          
-            <!-- Grid column -->
-
-            <!-- Grid column -->
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
               <!-- Links -->
               <h6 class="text-uppercase fw-bold mb-4">GitHub Contact</h6>
@@ -209,11 +189,9 @@
           </div>
         </div>
       </section>
-      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);"></div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYyYltLAg7ukRHj_iMyMqjY_HNW4xYL4&libraries=places&callback=initMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYyYltLAg7ukRHj_iMyMqjY_HNW4xYL4A&libraries=places&callback=initMap"></script>
   </body>
 </html>

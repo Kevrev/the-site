@@ -1,7 +1,7 @@
-/* Outlines all elements/css in red boxes to see sizing */
 /* * {
   outline: 1px solid #f00 !important;
 } */
+
 :root {
   --REIGreen: #1f513f;
 }
@@ -51,7 +51,7 @@ header {
   left: 27%;
   bottom: 24%;
 }
-/* Format banner better and so image isn't blurry */
+
 header > img {
   background-repeat: no-repeat;
   width: 100%;
@@ -72,41 +72,20 @@ header > img {
   margin: 0px;
 }
 
-/* Text color of the text in the searchBar */
+
 .searchBar ::placeholder {
   color: #aaabc3;
 }
 
-/* Controls the outline of the searchBar */
+
 .form-control {
   border-color: #aaabc3;
 }
 
-ul {
-  list-style-type: none;
-}
-
-#map {
-  height: 70vh;
-  width: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  float: left;
-}
-
-body {
-  background-color: rgb(163, 189, 163);
-}
-
 #results {
-  /* display: block; */
   width: 500px;
   max-height: 56.5vh;
   overflow-y: auto;
-}
-
-#results {
   display: block;
   max-height: 56.5vh;
   overflow-y: auto;
@@ -128,6 +107,15 @@ body {
   margin-top: 3%;
 }
 
+#map {
+  height: 70vh;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  float: left;
+}
+
 .content {
   max-height: 70vh;
 }
@@ -141,6 +129,30 @@ body {
   height: 100%;
   overflow: hidden;
   border-radius: 5px;
+}
+
+.card {
+  width: 100%;
+  height: 70vh;
+}
+
+.placeContainer {
+  width: 100%;
+  height: 97%;
+}
+
+.placeCard {
+  width: 100%;
+  height: 27%;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.placeCard-body {
+  padding: 3%;
+  height: 100%;
+  width: 70%;
 }
 
 .imgContainer {
@@ -197,30 +209,6 @@ body {
   margin-top: 3%;
 }
 
-.placeCard-body {
-  padding: 3%;
-  height: 100%;
-  width: 70%;
-}
-
-.card {
-  width: 100%;
-  height: 70vh;
-}
-
-.placeCard {
-  width: 100%;
-  height: 27%;
-  border-radius: 5px;
-  background: #ffffff;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-}
-
-.placeContainer {
-  width: 100%;
-  height: 97%;
-}
-
 .fadeIn {
   animation-name: fadeIn;
   animation-duration: 1s;
@@ -237,38 +225,20 @@ body {
   }
 }
 
+
+@media (max-width: 768px) {
+  footer {
+    display: none;
+  }
+}
+
+
 @media (min-width: 1000px) {
   .historyList {
     width: 235px;
   }
 }
 
-@media (min-height: 700px) and (min-width: 1500px) {
-  .locationName {
-    font-size: 1.2rem;
-    line-height: 135%;
-    margin-bottom: 3%;
-  }
-
-  .locationAddress {
-    font-size: 1rem;
-    line-height: 130%;
-    margin-bottom: 3%;
-  }
-
-  .locationContact {
-    font-size: 1rem;
-    line-height: 130%;
-    margin-bottom: 3%;
-  }
-
-  .locationRating {
-    padding-bottom: 2px;
-    font-size: 1rem;
-    line-height: 115%;
-    margin-top: 3%;
-  }
-}
 
 @media (min-height: 730px) and (min-width: 1500px) {
   .locationName {
