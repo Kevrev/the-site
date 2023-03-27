@@ -74,7 +74,7 @@
     <div class="content">
       <div class="container">
         <div class="row r-0">
-          <div class="col-md-3 col-sm-10 mb-3">
+          <div class="col-md-3 col-sm-10 mb-3 historyList">
             <!--added responsive width for small screen, so does other two-->
             <div id="historyList">
               <div class="historyTitle">Search History</div>
@@ -112,12 +112,108 @@
     <!-- Displays the forecast for the selected location -->
     <!-- <div id="weatherWidget"></div> -->
 
-    <!-- <hr class="hr" /> -->
+    <hr class="hr" />
 
-    <!-- <footer class="apiLinks">//icon and link of apis</footer> -->
+    <footer class="text-center text-lg-start bg-light text-muted">
+      <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <div class="me-5 d-none d-lg-block">
+          <span>Get connected:</span>
+        </div>
+        <div>
+          <a href="https://github.com/Kevrev/the-site" target="_blank" class="me-4 text-reset">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </section>
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <div class="row mt-3">
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <h6 class="text-uppercase fw-bold mb-4">
+                <i class="fas fa-gem me-3"></i>The Site: You Camp
+              </h6>
+              <p>
+                We aim to bring you the ability to find campsites at the click of a button
+              </p>
+            </div>
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                Project Pages
+              </h6>
+              <p>
+                <a href="https://github.com/Kevrev/the-site" target="_blank" class="text-reset">GitHub Repository
+               </a>
+              </p>
+              <p>
+                <a href="https://kevrev.github.io/the-site/" target="_blank" class="text-reset">GitHub Pages
+               </a>
+              </p>
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">
+                Powered By
+              </h6>
+              <p>
+                <a href="https://mdbootstrap.com/" target="_blank" class="text-reset">MDBoostrap
+               </a>
+              </p>
+              <p>
+                <a href="https://jquery.com/" target="_blank" class="text-reset">jQuery 
+               </a>
+              </p>
+              <p>
+                <a href="https://fontawesome.com/" target="_blank" class="text-reset">Font Awesome
+                </a>
+              </p>
+              <p>
+                <a href="https://developers.google.com/maps" target="_blank" class="text-reset">Google Maps API 
+               </a>
+              </p>
+              <p>
+                <a href="https://developers.google.com/maps/documentation/places/web-service" target="_blank" class="text-reset">Google Places API 
+               </a>
+              </p>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+          
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">GitHub Contact</h6>
+              <p>
+                <a href="https://github.com/Kevrev" target="_blank" class="text-reset">Kevrev 
+               </a>
+              </p>
+              <p>
+                <a href="https://github.com/jenryt" target="_blank" class="text-reset">jenryt 
+               </a>
+              </p>
+              <p>
+                <a href="https://github.com/ag-harry" target="_blank" class="text-reset">ag-harry
+                </a>
+              </p>
+              <p>
+                <a href="https://github.com/Annoreno0319" target="_blank" class="text-reset">Annoreno0319 
+               </a>
+              </p>
+              <p>
+                <a href="https://github.com/swimjames" target="_blank" class="text-reset">swimjames </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);"></div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYyYltLAg7ukRHj_iMyMqjY_HNW4xYL4A&libraries=places&callback=initialize"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYyYltLAg7ukRHj_iMyMqjY_HNW4xYL4&libraries=places&callback=initMap"></script>
   </body>
 </html>
