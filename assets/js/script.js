@@ -1,10 +1,10 @@
 // Initialize and add the map
-const MARKER_PATH =
+const markerPath =
   "https://developers.google.com/maps/documentation/javascript/images/marker_green";
 let storedHistory = JSON.parse(localStorage.getItem("historyValue")) || [];
 let historyEl = $("#history");
 
-$("#clearHistory").on("click", function () {
+$("#clearHistory").on("click", () => {
   localStorage.clear();
   historyEl.empty();
 });
@@ -15,13 +15,13 @@ for (var i = 0; i < 15; i++) {
 }
 
 function initMap() {
-  // The location of California
-  const california = { lat: 36.778, lng: -119.417 };
-  // The map, centered at California
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 5,
-    center: california,
-  });
+   // Latitude and Longitude of United States
+   const unitedstates = { lat: 37.0902, lng: -95.7129 };
+   // The map, centered at United States
+   const map = new google.maps.Map(document.getElementById("map"), {
+     zoom: 4.2,
+     center: unitedstates,
+   });
 
   // This is creating the searchbox
   let searchBox = new google.maps.places.SearchBox(
@@ -33,13 +33,12 @@ function initMap() {
     const places = searchBox.getPlaces();
 
     if (places.length === 0) {
-      // TODO: add content: there's no result/ may adjust the redius to test
       return;
     }
 
         // Hides the placeholder image and text
-    $('.placeholderDesign').addClass('d-none');
-    $('.placeholderText').addClass('d-none');
+    $(".placeholderDesign").addClass("d-none");
+    $(".placeholderText").addClass("d-none");
 
     let historyValue = places[0].formatted_address;
     storedHistory.unshift(historyValue);
@@ -63,6 +62,7 @@ function initMap() {
         location: location,
         // Searches in a 50km radius
         radius: 50000,
+        // Keyword gives more results than type
         keyword: "campground",
       },
 
@@ -94,14 +94,11 @@ function initMap() {
 }
 
 let activeMarker = null;
-
 let labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-// const markerIcon = MARKER_PATH + labels[labelIndex++ % labels.length] + ".png";
 
 function createMarker(place, map, labelIndex) {
   const markerIcon =
-    MARKER_PATH + labels[labelIndex++ % labels.length] + ".png";
+    markerPath + labels[labelIndex++ % labels.length] + ".png";
   let marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location,
@@ -109,6 +106,7 @@ function createMarker(place, map, labelIndex) {
     animation: google.maps.Animation.DROP,
   });
 
+  // Making a request to Google Places for additional details
   let service = new google.maps.places.PlacesService(map);
   let request = {
     placeId: place.place_id,
@@ -119,19 +117,19 @@ function createMarker(place, map, labelIndex) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       const photoUrl =
         place.photos && place.photos.length > 0
-          ? place.photos[0].getUrl({
-              maxWidth: 150,
-              maxHeight: 150,
-            })
-          : "./assets/images/NO IMAGE AVAILABLE.png";
+         ? place.photos[0].getUrl()
+          : "./assets/images/noImage.png";
 
-      // $("#resultDesc").text(markers.length + " Results:");
-
-      const websiteUrl = placeDetails.website ? placeDetails.website : "";
+      const websiteUrl = placeDetails.website 
+        ? placeDetails.website 
+          : "";
       const phoneNumber = placeDetails.formatted_phone_number
         ? placeDetails.formatted_phone_number
-        : "N/A";
-      const userRating = placeDetails.rating ? placeDetails.rating : "--";
+          : "N/A";
+      const userRating = placeDetails.rating 
+        ? placeDetails.rating 
+          : "--";
+      // Creating the card that information will be added into 
       const $outerDiv = $("<div>")
         .addClass("fadeIn placeCard mb-2");
 
@@ -165,11 +163,13 @@ function createMarker(place, map, labelIndex) {
 
       const $websiteLink = $("<a>")
         .attr({ href: websiteUrl, target: "_blank" })
-        .text(" Website ");
+        .text(" Website ")
+        .toggleClass("d-none", websiteUrl === "");
 
       const $externalLinkIcon = $("<i>")
         .addClass("fa fa-external-link")
-        .attr("aria-hidden", "true");
+        .attr("aria-hidden", "true")
+        .toggleClass("d-none", websiteUrl === "");
 
       const $locationRating = $("<p>")
         .addClass("card-text locationRating")
@@ -193,7 +193,7 @@ function createMarker(place, map, labelIndex) {
 
       $imgDiv.append($img);
 
-      $outerDiv.on("click", function () {
+      $outerDiv.on("click", () => {
         map.setCenter(place.geometry.location);
         const infowindow = new google.maps.InfoWindow({
           content: "You are here",
@@ -201,7 +201,7 @@ function createMarker(place, map, labelIndex) {
           pixelOffset: new google.maps.Size(0, -32),
         });
         infowindow.open(map);
-        setTimeout(function () {
+        setTimeout( () => {
           infowindow.close();
         }, 2000);
       });
@@ -210,37 +210,18 @@ function createMarker(place, map, labelIndex) {
     }
   });
 
-  // const tr = document.createElement("tr");
-  // const iconTd = document.createElement("td");
-  // const nameTd = document.createElement("td");
-  // const icon = document.createElement("img");
-
-  // icon.src = markerIcon;
-  // icon.setAttribute("class", "placeIcon");
-
-  // nameTd.textContent = place.name;
-
-  // iconTd.appendChild(icon);
-  // tr.appendChild(iconTd);
-  // tr.appendChild(nameTd);
-  // results.appendChild(tr);
-
-  // tr.addEventListener("click", () => {
-  //   map.setCenter(place.geometry.location);
-  // });
-
   // Listens for click on marker
-  marker.addListener("click", function () {
+  marker.addListener("click", () => {
     // Hide the previous active marker
     if (activeMarker) {
       activeMarker.infoWindow.close();
       activeMarker.setAnimation(null);
     }
 
-    // Set this marker as active
+    // Set marker as active
     activeMarker = marker;
 
-    // Create info window content
+    // Window for markers, just as a back up
     let content =
       "<strong>" +
       place.name +
@@ -252,13 +233,8 @@ function createMarker(place, map, labelIndex) {
       '" target="_blank">View on Google Maps</a><br/>';
 
     if (place.photos && place.photos.length > 0) {
-      const photoUrl = place.photos[0].getUrl({
-        maxWidth: 150,
-        maxHeight: 150,
-      });
+      const photoUrl = place.photos[0].getUrl();
       content += '<img src="' + photoUrl + '"/><br/>';
-    } else {
-      content += "<em>No image available</em><br/>"; //TODO: add an image for no image result
     }
 
     // Creates info window and sets the content
@@ -276,21 +252,9 @@ function createMarker(place, map, labelIndex) {
 
 let markers = [];
 
-// function clearResults() {
-//   const results = document.getElementById("results");
-
-//   while (results.childNodes[0]) {
-//     results.removeChild(results.childNodes[0]);
-//   }
-// }
-
 function clearResults() {
   const results = document.getElementById("cardList");
   while (results.childNodes[0]) {
     results.removeChild(results.childNodes[0]);
   }
 }
-
-// function initialize() {
-//   initMap();
-// }
