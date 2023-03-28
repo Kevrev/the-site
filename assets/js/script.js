@@ -37,8 +37,8 @@ function initMap() {
     }
 
         // Hides the placeholder image and text
-    $('.placeholderDesign').addClass('d-none');
-    $('.placeholderText').addClass('d-none');
+    $(".placeholderDesign").addClass("d-none");
+    $(".placeholderText").addClass("d-none");
 
     let historyValue = places[0].formatted_address;
     storedHistory.unshift(historyValue);
@@ -129,6 +129,7 @@ function createMarker(place, map, labelIndex) {
       const userRating = placeDetails.rating 
         ? placeDetails.rating 
           : "--";
+      // Creating the card that information will be added into 
       const $outerDiv = $("<div>")
         .addClass("fadeIn placeCard mb-2");
 
@@ -217,10 +218,10 @@ function createMarker(place, map, labelIndex) {
       activeMarker.setAnimation(null);
     }
 
-    // Set this marker as active
+    // Set marker as active
     activeMarker = marker;
 
-    // Create info window content
+    // Window for markers, just as a back up
     let content =
       "<strong>" +
       place.name +

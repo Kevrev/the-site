@@ -44,6 +44,7 @@ header {
   position: relative;
   left: 27%;
   bottom: 24%;
+  padding-bottom: 50px;
   font-size: 40px;
 }
 
@@ -243,6 +244,11 @@ header > img {
   }
 }
 
+@media (max-width: 1500px) {
+  .websiteTitle {
+    height: 60%;
+  }
+}
 
 @media (min-width: 1000px) {
   .historyList {
