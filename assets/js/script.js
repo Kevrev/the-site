@@ -15,13 +15,13 @@ for (var i = 0; i < 15; i++) {
 }
 
 function initMap() {
-   // Latitude and Longitude of United States
-   const unitedstates = { lat: 37.0902, lng: -95.7129 };
-   // The map, centered at United States
-   const map = new google.maps.Map(document.getElementById("map"), {
-     zoom: 4.2,
-     center: unitedstates,
-   });
+  // Latitude and Longitude of United States
+  const unitedstates = { lat: 37.0902, lng: -95.7129 };
+  // The map, centered at United States
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4.2,
+    center: unitedstates,
+  });
 
   // This is creating the searchbox
   let searchBox = new google.maps.places.SearchBox(
@@ -36,7 +36,7 @@ function initMap() {
       return;
     }
 
-        // Hides the placeholder image and text
+    // Hides the placeholder image and text
     $(".placeholderDesign").addClass("d-none");
     $(".placeholderText").addClass("d-none");
 
@@ -97,8 +97,7 @@ let activeMarker = null;
 let labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 function createMarker(place, map, labelIndex) {
-  const markerIcon =
-    markerPath + labels[labelIndex++ % labels.length] + ".png";
+  const markerIcon = markerPath + labels[labelIndex++ % labels.length] + ".png";
   let marker = new google.maps.Marker({
     map: map,
     position: place.geometry.location,
@@ -117,21 +116,16 @@ function createMarker(place, map, labelIndex) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       const photoUrl =
         place.photos && place.photos.length > 0
-         ? place.photos[0].getUrl()
+          ? place.photos[0].getUrl()
           : "./assets/images/noImage.png";
 
-      const websiteUrl = placeDetails.website 
-        ? placeDetails.website 
-          : "";
+      const websiteUrl = placeDetails.website ? placeDetails.website : "";
       const phoneNumber = placeDetails.formatted_phone_number
         ? placeDetails.formatted_phone_number
-          : "N/A";
-      const userRating = placeDetails.rating 
-        ? placeDetails.rating 
-          : "--";
-      // Creating the card that information will be added into 
-      const $outerDiv = $("<div>")
-        .addClass("fadeIn placeCard mb-2");
+        : "N/A";
+      const userRating = placeDetails.rating ? placeDetails.rating : "--";
+      // Creating the card that information will be added into
+      const $outerDiv = $("<div>").addClass("fadeIn placeCard mb-2");
 
       const $rowDiv = $("<div>").addClass("row g-0");
 
@@ -201,7 +195,7 @@ function createMarker(place, map, labelIndex) {
           pixelOffset: new google.maps.Size(0, -32),
         });
         infowindow.open(map);
-        setTimeout( () => {
+        setTimeout(() => {
           infowindow.close();
         }, 2000);
       });
@@ -233,7 +227,10 @@ function createMarker(place, map, labelIndex) {
       '" target="_blank">View on Google Maps</a><br/>';
 
     if (place.photos && place.photos.length > 0) {
-      const photoUrl = place.photos[0].getUrl();
+      const photoUrl = place.photos[0].getUrl({
+        maxWidth: 150,
+        maxHeight: 150,
+      });
       content += '<img src="' + photoUrl + '"/><br/>';
     }
 
