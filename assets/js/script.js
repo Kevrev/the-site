@@ -118,7 +118,7 @@ function createMarker(place, map, labelIndex) {
       const photoUrl =
         place.photos && place.photos.length > 0
          ? place.photos[0].getUrl()
-          : "./assets/images/NO IMAGE AVAILABLE.png";
+          : "./assets/images/noImage.png";
 
       const websiteUrl = placeDetails.website 
         ? placeDetails.website 
