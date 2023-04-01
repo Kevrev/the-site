@@ -69,7 +69,6 @@ function initMap() {
       (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           clearResults(); // Clear any existing markers on the map on the lise TODO: fix the label rotation issue
-
           // Clear any existing markers on the map
           markers.forEach((marker) => {
             marker.setMap(null);
@@ -82,11 +81,47 @@ function initMap() {
           }
 
           // Fits the map to the bounds of the markers
-          const bounds = new google.maps.LatLngBounds();
+          let bounds = new google.maps.LatLngBounds();
           markers.forEach((marker) => {
             bounds.extend(marker.getPosition());
           });
           map.fitBounds(bounds);
+        } else {
+          clearResults();
+          let bounds = new google.maps.LatLngBounds(location);
+
+          markers.forEach((marker) => {
+            marker.setMap(null);
+          });
+          map.fitBounds(bounds);
+          map.setZoom(5); // set zoom level to 5
+
+          // when the result outcome is 0, create a modal to alert users.
+          let noResultModal = $("<div>").attr("class", "noResultModal");
+          let nrmContent = $("<div>").attr("class", "nrmContent");
+          let nrmClose = $("<button>").attr("class", "closeBtn").text("close");
+          let nrmImg = $("<img>").attr("src", "./assets/images/cairn.png"); //a searching map or get lost img
+          let trailFailText =
+            "Trail fail! <br>There is no campground in the searched area.";
+          let nrmText = $("<p>").attr("class", "trailFail").html(trailFailText);
+          nrmContent.append(nrmImg, nrmText, nrmClose);
+          noResultModal.append(nrmContent);
+          $("#resultContainer").append(noResultModal);
+
+          noResultModal.show();
+
+          // when users click on "close", the modal disappear
+          nrmClose.click(function () {
+            noResultModal.hide();
+            return;
+          });
+          // or when users click on anywhere on the screen but outside of the modal, alert disappears.
+          $(window).click(function (event) {
+            if (!$(event.target).is(noResultModal)) {
+              noResultModal.hide();
+              return;
+            }
+          });
         }
       }
     );

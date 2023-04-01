@@ -68,11 +68,9 @@ header > img {
   margin: 0px;
 }
 
-
 .searchBar ::placeholder {
   color: #aaabc3;
 }
-
 
 .form-control {
   border-color: #aaabc3;
@@ -123,6 +121,7 @@ header > img {
   height: 100%;
   overflow: hidden;
   border-radius: 5px;
+  margin-left: 0;
 }
 
 .card {
@@ -134,7 +133,6 @@ header > img {
   width: 100%;
   height: 97%;
 }
-
 
 .placeholderDesign {
   width: 100%;
@@ -185,7 +183,6 @@ header > img {
   font-weight: 400;
   font-size: 0.9rem;
   color: #0c0b08bf;
-
 }
 
 .locationAddress {
@@ -206,7 +203,6 @@ header > img {
   font-weight: 400;
   font-size: 0.75rem;
   color: #9091ac;
-
 }
 
 .locationRating {
@@ -218,7 +214,6 @@ header > img {
   font-weight: 400;
   font-size: 0.75rem;
   color: #9091ac;
-
 }
 
 .fadeIn {
@@ -227,6 +222,51 @@ header > img {
   animation-fill-mode: both;
 }
 
+.noResultModal {
+  position: relative;
+  top: -65%;
+  left: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  width: 80%;
+  height: 30%;
+  border: solid var(--REIGreen) 2px;
+  background-color: white;
+}
+
+.trailFail {
+  margin-top: 0;
+  width: 70%;
+  margin-bottom: 1rem;
+  position: absolute;
+  left: 25%;
+  top: 17%;
+}
+
+.nrmContent {
+  height: 100%;
+}
+
+.nrmContent > img {
+  opacity: 90%;
+  position: absolute;
+  top: 10%;
+  max-width: 25%;
+  max-height: 80%;
+}
+
+.closeBtn {
+  float: right;
+  right: 9px;
+  bottom: 9px;
+  position: absolute;
+  border-radius: 9px;
+  color: white;
+  border: none;
+  background-color: var(--REIGreen);
+  box-shadow: 0 4px 9px -4px var(--REIGreen);
+}
 
 @keyframes fadeIn {
   0% {
@@ -237,10 +277,41 @@ header > img {
   }
 }
 
+@media (max-width: 1185px) {
+  .trailFail {
+    margin-top: 0;
+    width: 70%;
+    margin-bottom: 1rem;
+    position: absolute;
+    left: 25%;
+    top: 17%;
+    font-size: 66%;
+  }
+}
 
 @media (max-width: 768px) {
   footer {
     display: none;
+  }
+
+  #historyList {
+    text-align: center;
+  }
+
+  #history {
+    display: block;
+    max-height: 17vh;
+    overflow-y: auto;
+  }
+
+  .trailFail {
+    margin-top: 0;
+    width: 70%;
+    margin-bottom: 1rem;
+    position: absolute;
+    left: 25%;
+    top: 17%;
+    font-size: 1rem;
   }
 }
 
@@ -256,6 +327,18 @@ header > img {
   }
 }
 
+@media (max-width: 600px) {
+  .searchBar {
+    width: 60vw;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 3vh;
+  }
+
+  #historyList {
+    text-align: center;
+  }
+}
 
 @media (min-height: 730px) and (min-width: 1500px) {
   .locationName {
