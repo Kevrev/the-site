@@ -100,7 +100,10 @@ function initMap() {
           let noResultModal = $("<div>").attr("class", "noResultModal");
           let nrmContent = $("<div>").attr("class", "nrmContent");
           let nrmClose = $("<button>").attr("class", "closeBtn").text("close");
-          let nrmImg = $("<img>").attr("src", "./assets/images/cairn.png"); //a searching map or get lost img
+          let nrmImg = $("<img>").attr(
+            "src",
+            "assets/images/noCampingSign.png"
+          ); //a searching map or get lost img
           let trailFailText =
             "Trail fail! <br>There is no campground in the searched area.";
           let nrmText = $("<p>").attr("class", "trailFail").html(trailFailText);

@@ -16,8 +16,8 @@ header {
 
 .websiteTitle {
   position: absolute;
-  width: 300px;
-  height: 40%;
+  width: 90%;
+  height: 50%;
   bottom: 3vh;
   left: 3vw;
   font-family: "Delicious Handrawn", cursive, sans-serif;
@@ -42,6 +42,7 @@ header {
 
 .youCamp {
   position: relative;
+  width: 50%;
   left: 27%;
   bottom: 24%;
   padding-bottom: 50px;
@@ -50,7 +51,7 @@ header {
 
 header > img {
   background-repeat: no-repeat;
-  width: 100%;
+  width: 100vw;
   height: 40vh;
   object-fit: cover;
   margin-bottom: 5px;
@@ -223,25 +224,25 @@ header > img {
 }
 
 .noResultModal {
-  position: relative;
-  top: -65%;
-  left: auto;
+  position: fixed;
+  top: 25vh;
+  left: 15vw;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
-  width: 80%;
-  height: 30%;
+  width: 70vw;
+  height: 50vh;
   border: solid var(--REIGreen) 2px;
   background-color: white;
 }
 
 .trailFail {
   margin-top: 0;
-  width: 70%;
-  margin-bottom: 1rem;
+  width: 60%;
   position: absolute;
-  left: 25%;
+  left: 40%;
   top: 17%;
+  font-size: xx-large;
 }
 
 .nrmContent {
@@ -249,11 +250,12 @@ header > img {
 }
 
 .nrmContent > img {
-  opacity: 90%;
+  opacity: 100%;
   position: absolute;
-  top: 10%;
-  max-width: 25%;
-  max-height: 80%;
+  max-width: 40%;
+  border-radius: 9px;
+  height: 90%;
+  top: 5%;
 }
 
 .closeBtn {
@@ -277,15 +279,59 @@ header > img {
   }
 }
 
-@media (max-width: 1185px) {
+@media screen and (orientation: portrait) and (max-aspect-ratio: 1/1) {
+  .noResultModal {
+    position: fixed;
+    top: 10vh;
+    left: 2vw;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    width: 96vw;
+    height: 80vh;
+    border: solid var(--REIGreen) 2px;
+    background-color: white;
+  }
+
+  .nrmContent > img {
+    opacity: 100%;
+    position: absolute;
+    max-width: 90%;
+    left: 5%;
+    border-radius: 9px;
+    height: 60%;
+    top: 10%;
+  }
+
   .trailFail {
     margin-top: 0;
-    width: 70%;
-    margin-bottom: 1rem;
+    width: 80%;
     position: absolute;
-    left: 25%;
-    top: 17%;
-    font-size: 66%;
+    left: 10%;
+    top: 74%;
+    font-size: xx-large;
+  }
+}
+
+@media screen and (orientation: portrait) and (max-aspect-ratio: 1/1) and (max-width: 560px) {
+  .trailFail {
+    margin-top: 0;
+    width: 80%;
+    position: absolute;
+    left: 10%;
+    top: 74%;
+    font-size: x-large;
+  }
+}
+
+@media screen and (orientation: portrait) and (max-aspect-ratio: 1/1) and (max-width: 360px) {
+  .trailFail {
+    margin-top: 0;
+    width: 80%;
+    position: absolute;
+    left: 10%;
+    top: 74%;
+    font-size: large;
   }
 }
 
@@ -303,21 +349,12 @@ header > img {
     max-height: 17vh;
     overflow-y: auto;
   }
-
-  .trailFail {
-    margin-top: 0;
-    width: 70%;
-    margin-bottom: 1rem;
-    position: absolute;
-    left: 25%;
-    top: 17%;
-    font-size: 1rem;
-  }
 }
 
-@media (max-width: 1500px) {
+@media (min-width: 1500px) {
   .websiteTitle {
     height: 60%;
+    width: 50%;
   }
 }
 
