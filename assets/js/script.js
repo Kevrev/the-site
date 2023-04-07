@@ -125,6 +125,9 @@ function initMap() {
               return;
             }
           });
+          noResultModal.click(function (event) {
+            event.stopPropagation();
+          });
         }
       }
     );
